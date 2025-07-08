@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-umde-dark text-white min-h-screen antialiased;
+  font-family: 'Inter', 'Proxima Nova', Arial, sans-serif;
+}
+
+:focus {
+  outline: 2px solid #0D4FF7;
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #0D1A3A;
+}
+::-webkit-scrollbar-thumb {
+  background: #0D4FF7;
+  border-radius: 4px;
+}
