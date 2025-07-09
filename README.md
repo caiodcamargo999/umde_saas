@@ -9,10 +9,10 @@ O CRM Imobiliário mais inteligente do Brasil, desenvolvido para captação, qua
 - **Deploy:** Netlify (deploy automático via GitHub)
 
 ## 🔗 Integrações de API
-- **Assertiva (CNPJ):** [Solicitar API](https://www.assertiva.com.br/)
+- **Assertiva (CNPJ):** [Solicitar API](https://assertivasolucoes.com.br/servicos/api/)
 - **WhatsApp Business (API não oficial):** [wwebjs.dev](https://wwebjs.dev/) (QR Code no próprio software)
-- **Canal Pro (Grupo OLX):** [Solicitar API](https://canalpro.olx.com.br/)
-- **Referência de UX:** [Kommo CRM](https://www.kommo.com/pt-br/)
+- **Canal Pro (Grupo OLX):** [Solicitar API](https://developers.grupozap.com/)
+- **Referência de sistema:** [Kommo CRM](https://www.kommo.com/pt-br/)
 
 ## 🛠️ Como rodar localmente
 
@@ -24,7 +24,10 @@ Acesse [http://localhost:3000](http://localhost:3000) no navegador.
 
 ## 🌐 Deploy (Netlify)
 - O deploy é feito automaticamente a partir do repositório do GitHub.
-- Basta conectar o repositório no painel do Netlify e configurar o build command: `npm run build` e publish directory: `.next`.
+- Basta conectar o repositório no painel do Netlify e configurar:
+  - Build command: `npm run build`
+  - Publish directory: `.next`
+- O Netlify detecta automaticamente projetos Next.js modernos, não é necessário plugin extra.
 
 ## 📁 Estrutura do Projeto
 - `src/app/` — Páginas, layouts e estilos globais
