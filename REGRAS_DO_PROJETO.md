@@ -17,10 +17,10 @@
 - Funil visual de leads por estágio
 - Campos dinâmicos adaptáveis aos fluxos UMDÊ
 - Acompanhamento de taxa de ocupação, valorização e ROI
-- Pesquisa e extração de dados de CNPJ (Assertiva)
+- Pesquisa e extração de dados de CNPJ (Assertiva) (@https://assertivasolucoes.com.br/servicos/api/)
 - Enriquecimento de leads para outbound
-- Central WhatsApp Business API (multiatendente, histórico, modelos)
-- Importação automática de leads do Canal Pro
+- Central WhatsApp Business API (multiatendente, histórico, modelos) (API não oficial, QR Code: https://wwebjs.dev/)
+- Importação automática de leads do Canal Pro (Grupo OLX) (@https://developers.grupozap.com/)
 - Gestão de pré-vendas (criação, atribuição, métricas, gamificação)
 - Painel de performance de imóveis (ROI, tempo, ocupação, exportação)
 
@@ -53,6 +53,7 @@
 - **UI:** React (Next.js), Tailwind para todo o styling
 - **Autenticação:** Firebase Auth (Google e Email/Senha)
 - **Controle de Versão:** Git + GitHub
+- **Deploy:** Netlify (deploy automático a partir do repositório do GitHub)
 - **Proibido:** HTML puro, jQuery, bibliotecas legadas
 
 ## 6. Princípios de Desenvolvimento
@@ -76,7 +77,7 @@
 ## 8. Arquitetura e Modelagem
 - Relacionar entidades: Imóveis, Leads, Agentes, Investidores, Contratos, Status
 - Backend orientado a APIs (Assertiva, WhatsApp, Canal Pro)
-- Sistema de mensagens inspirado no Kommo CRM
+- Sistema de integração de app de mensagens com CRM inspirado no Kommo CRM (https://www.kommo.com/pt-br/)
 - Dashboards com filtros por tipo, localização, estratégia
 
 ## 9. Benefícios para o Negócio
@@ -126,12 +127,13 @@ Abra [http://localhost:3000](http://localhost:3000) no navegador para ver o resu
 - Edite as páginas em `src/app/` para ver atualizações automáticas.
 - Rotas de API podem ser criadas em `src/app/api/`.
 - O projeto utiliza [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) para otimização de fontes.
+- O deploy é feito via Netlify, conectado ao repositório do GitHub.
 
 ### Recursos úteis
 - [Documentação Next.js](https://nextjs.org/docs)
 - [Tutorial Next.js](https://nextjs.org/learn-pages-router)
 - [Repositório Next.js no GitHub](https://github.com/vercel/next.js)
-- [Deploy na Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
+- [Deploy na Netlify](https://www.netlify.com/)
 
 ---
 
