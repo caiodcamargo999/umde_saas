@@ -20,7 +20,6 @@ export default function InternoLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Estado para controlar o drawer mobile
   const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <>
@@ -37,15 +36,15 @@ export default function InternoLayout({
           ))}
         </nav>
       </aside>
-      {/* Botão de menu mobile */}
+      {/* Botão de menu mobile minimalista e animado */}
       <button
-        className="md:hidden fixed top-4 left-4 z-30 w-10 h-10 flex items-center justify-center bg-[#101C3A] rounded-lg shadow-lg border border-[#19244A] focus:outline-none focus:ring-2 focus:ring-[#0D4FF7]"
-        aria-label="Abrir menu"
-        onClick={() => setDrawerOpen(true)}
+        className="md:hidden fixed top-4 left-4 z-30 w-10 h-10 flex items-center justify-center bg-transparent focus:outline-none group"
+        aria-label={drawerOpen ? "Fechar menu" : "Abrir menu"}
+        onClick={() => setDrawerOpen(!drawerOpen)}
       >
-        <span className="block w-6 h-0.5 bg-white mb-1 rounded transition-all" />
-        <span className="block w-6 h-0.5 bg-white mb-1 rounded transition-all" />
-        <span className="block w-6 h-0.5 bg-white rounded transition-all" />
+        <span className={`block absolute w-7 h-0.5 bg-white rounded transition-all duration-300 ease-in-out ${drawerOpen ? 'rotate-45 translate-y-1.5' : '-translate-y-2'}`}></span>
+        <span className={`block absolute w-7 h-0.5 bg-white rounded transition-all duration-300 ease-in-out ${drawerOpen ? 'opacity-0' : ''}`}></span>
+        <span className={`block absolute w-7 h-0.5 bg-white rounded transition-all duration-300 ease-in-out ${drawerOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-2'}`}></span>
       </button>
       {/* Drawer Mobile */}
       {drawerOpen && (
@@ -89,6 +88,8 @@ export default function InternoLayout({
         .animate-slide-in-left {
           animation: slide-in-left 0.25s cubic-bezier(0.4,0,0.2,1);
         }
+        .group { position: relative; }
+        .group span { left: 0; }
       `}</style>
     </>
   );
