@@ -12,7 +12,7 @@ export default function DashboardPage() {
           { label: 'Investidores', value: 15, color: 'bg-[#101C3A]' },
           { label: 'Contratos', value: 23, color: 'bg-[#0D4FF7]' },
           { label: 'Performance', value: '98%', color: 'bg-[#101C3A]' },
-        ].map((card, i) => (
+        ].map((card) => (
           <div key={card.label} className={`rounded-2xl shadow-xl p-6 flex flex-col items-center gap-2 ${card.color} hover:scale-105 transition-transform duration-200 animate-fade-in`}> 
             <span className="text-2xl font-bold text-white/90">{card.value}</span>
             <span className="text-white/60 text-sm font-semibold">{card.label}</span>

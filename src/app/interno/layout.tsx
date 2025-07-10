@@ -1,15 +1,8 @@
 "use client";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import "../globals.css";
 import { useState } from "react";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 const navLinks = [
   { href: "/interno/dashboard", label: "Dashboard" },
