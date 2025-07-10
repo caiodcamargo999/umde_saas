@@ -29,6 +29,24 @@ Acesse [http://localhost:3000](http://localhost:3000) no navegador.
   - Publish directory: `.next`
 - O Netlify detecta automaticamente projetos Next.js modernos, não é necessário plugin extra.
 
+## 🚀 Deploy no Netlify (Passo a Passo)
+
+1. Faça push do projeto para o GitHub.
+2. No painel do Netlify, conecte o repositório.
+3. Configure:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `.next`
+   - (Opcional) **Node version:** `20` (adicione em Site settings > Environment > Environment variables: `NODE_VERSION=20`)
+4. Se usar variáveis de ambiente (ex: Firebase), adicione-as no painel do Netlify em Site settings > Environment > Environment variables.
+5. Clique em "Deploy site".
+
+Se houver erro relacionado ao arquivo `next.config.ts`, renomeie para `next.config.js` e ajuste o export para CommonJS:
+```js
+/** @type {import('next').NextConfig} */
+const nextConfig = { reactStrictMode: true, swcMinify: true };
+module.exports = nextConfig;
+```
+
 ## 📁 Estrutura do Projeto
 - `src/app/` — Páginas, layouts e estilos globais
 - `public/` — Assets públicos
