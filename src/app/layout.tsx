@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Image from "next/image";
 import "./globals.css";
+import HeaderLogo from "./HeaderLogo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,11 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased bg-[#0D1A3A] min-h-screen flex flex-col items-center`}>
-        <header className="w-full flex justify-center items-center pt-6 pb-4 bg-transparent">
-          <div className="flex items-center justify-center w-full max-w-xs md:max-w-md">
-            <Image src="/logo/umde-logo.png" alt="Logo Umdê" width={160} height={44} priority className="w-full h-auto max-w-[160px] md:max-w-[220px]" />
-          </div>
-        </header>
+        <HeaderLogo />
         <main className="w-full flex-1 flex flex-col items-center justify-start">
           {children}
         </main>
