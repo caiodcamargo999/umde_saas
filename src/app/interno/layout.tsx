@@ -38,14 +38,14 @@ export default function InternoLayout({
       </aside>
       {/* Botão de menu mobile minimalista e animado */}
       <button
-        className="md:hidden fixed top-3 left-3 z-30 w-9 h-9 flex flex-col items-center justify-center bg-transparent focus:outline-none group p-0 m-0"
+        className="md:hidden fixed top-2 left-2 z-30 w-9 h-9 bg-transparent focus:outline-none group p-0 m-0 relative"
         aria-label={drawerOpen ? "Fechar menu" : "Abrir menu"}
         onClick={() => setDrawerOpen(!drawerOpen)}
         style={{ boxShadow: 'none', border: 'none' }}
       >
-        <span className={`block w-7 h-0.5 bg-white rounded transition-all duration-300 ease-in-out ${drawerOpen ? 'rotate-45 translate-y-2' : '-translate-y-2'}`}></span>
-        <span className={`block w-7 h-0.5 bg-white rounded transition-all duration-300 ease-in-out my-1 ${drawerOpen ? 'opacity-0' : ''}`}></span>
-        <span className={`block w-7 h-0.5 bg-white rounded transition-all duration-300 ease-in-out ${drawerOpen ? '-rotate-45 -translate-y-2' : 'translate-y-2'}`}></span>
+        <span className={`absolute left-1 top-2 w-7 h-0.5 bg-white rounded transition-all duration-300 ease-in-out ${drawerOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+        <span className={`absolute left-1 top-4 w-7 h-0.5 bg-white rounded transition-all duration-300 ease-in-out ${drawerOpen ? 'opacity-0' : ''}`}></span>
+        <span className={`absolute left-1 top-6 w-7 h-0.5 bg-white rounded transition-all duration-300 ease-in-out ${drawerOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
       </button>
       {/* Drawer Mobile */}
       {drawerOpen && (
