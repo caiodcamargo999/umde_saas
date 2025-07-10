@@ -3,7 +3,7 @@ import React from "react";
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-[#0D1A3A] px-4">
-      <section className="w-full max-w-3xl bg-[#101C3A]/80 rounded-2xl shadow-2xl p-8 md:p-16 flex flex-col items-center gap-8 mt-12 mb-12 animate-fade-in">
+      <section className="w-full max-w-3xl bg-[#101C3A]/80 rounded-2xl shadow-2xl p-8 md:p-16 flex flex-col items-center gap-8 mt-4 mb-4 animate-fade-in">
         <h1 className="text-4xl md:text-6xl font-black text-[#0D4FF7] mb-2 text-center drop-shadow-lg tracking-tight font-sans">
           O CRM Imobiliário Mais Inteligente do Brasil
         </h1>
@@ -12,7 +12,7 @@ export default function Home() {
         </h2>
         <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
           <a
-            href="/cadastro"
+            href="/auth"
             className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#0D4FF7] text-white font-bold text-lg shadow-lg hover:bg-blue-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 scale-100 hover:scale-105 active:scale-95"
             tabIndex={0}
           >

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 import "./globals.css";
 
 const inter = Inter({
@@ -20,6 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
+        <header className="w-full flex justify-center items-center pt-4 pb-2 md:pt-6 md:pb-4 bg-transparent">
+          <div className="flex items-center justify-center w-full max-w-xs md:max-w-md">
+            <Image src="/logo/umde-logo.png" alt="Logo Umdê" width={160} height={44} priority className="w-full h-auto max-w-[160px] md:max-w-[220px]" />
+          </div>
+        </header>
         {children}
       </body>
     </html>
