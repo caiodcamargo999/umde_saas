@@ -1,3 +1,4 @@
+"use client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
@@ -9,11 +10,6 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
-
-export const metadata: Metadata = {
-  title: "UMDÊ SaaS CRM",
-  description: "CRM Imobiliário mais inteligente do Brasil",
-};
 
 const navLinks = [
   { href: "/interno/dashboard", label: "Dashboard" },
