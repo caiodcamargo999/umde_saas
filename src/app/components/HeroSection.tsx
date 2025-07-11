@@ -44,8 +44,8 @@ export default function HeroSection() {
             whileHover={{ scale: 1.05, backgroundColor: '#13235a' }}
             className="px-8 py-3 rounded-full font-bold text-lg bg-white/10 text-white border border-[#0D4FF7] transition-all focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] focus:ring-offset-2"
             onClick={() => setShowDemo(true)}
-          >
-            Assista à demo
+        >
+          Assista à demo
           </motion.button>
         </motion.div>
       </div>
@@ -73,7 +73,7 @@ export default function HeroSection() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
-          </div>
+      </div>
         </motion.div>
       )}
     </section>

@@ -45,10 +45,10 @@ const navItems = [
 export default function Sidebar() {
   const pathname = usePathname();
   return (
-    <aside className="hidden md:flex flex-col w-28 bg-[#101C3A]/90 border-r border-[#0D4FF7]/20 backdrop-blur-lg pt-0 items-center gap-2 shadow-2xl z-20 min-h-screen fixed left-0 top-0 h-screen">
-      {/* Logo Umdê no topo, ocupando toda a largura do retângulo */}
-      <div className="w-full flex items-center justify-center h-24 bg-transparent mb-6">
-        <img src="/logo/umde-icon.png" alt="Logo Umdê" className="object-contain w-16 h-16 md:w-20 md:h-20" style={{maxHeight:'80px', maxWidth:'80px'}} />
+    <aside className="hidden md:flex flex-col w-32 bg-[#101C3A]/90 border-r border-[#0D4FF7]/20 backdrop-blur-lg pt-0 items-center gap-2 shadow-2xl z-20 min-h-screen fixed left-0 top-0 h-screen">
+      {/* Logo Umdê no topo, ocupando quase toda a largura do retângulo */}
+      <div className="w-full flex items-center justify-center h-32 bg-transparent mb-6">
+        <img src="/logo/umde-icon.png" alt="Logo Umdê" className="object-contain w-24 h-24 md:w-28 md:h-28" style={{maxHeight:'110px', maxWidth:'110px'}} />
       </div>
       <nav className="flex flex-col gap-2 w-full items-center">
         {navItems.map((item) => {
