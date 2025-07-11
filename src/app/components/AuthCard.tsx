@@ -5,7 +5,7 @@ import AuthButton from "./AuthButton";
 export default function AuthCard() {
   return (
     <motion.div
-      className="bg-[#101C3A]/80 rounded-2xl shadow-2xl p-4 sm:p-8 md:p-12 flex flex-col items-center gap-6 sm:gap-8 w-full max-w-md border border-[#0D4FF7]/30 backdrop-blur-md"
+      className="bg-[#101C3A]/80 rounded-2xl shadow-2xl p-2 sm:p-4 md:p-8 flex flex-col items-center gap-4 sm:gap-8 w-full max-w-md border border-[#0D4FF7]/30 backdrop-blur-md"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
