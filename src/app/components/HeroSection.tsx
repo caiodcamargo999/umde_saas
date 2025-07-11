@@ -1,8 +1,12 @@
 "use client";
-// @ts-ignore
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function HeroSection() {
+  const [showDemo, setShowDemo] = useState(false);
+  const router = useRouter();
+
   return (
     <section className="relative flex flex-col items-center justify-center min-h-[70vh] py-16 text-center overflow-hidden bg-gradient-to-b from-[#0D1A3A] to-[#000000]">
       {/* Azul pulsando no fundo */}
@@ -32,17 +36,46 @@ export default function HeroSection() {
             whileHover={{ scale: 1.05, boxShadow: '0 0 16px #0D4FF7' }}
             className="px-8 py-3 rounded-full font-bold text-lg bg-[#0D4FF7] text-white shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] focus:ring-offset-2"
             style={{ boxShadow: '0 0 24px #0D4FF7AA' }}
+            onClick={() => router.push('/auth')}
           >
             Comece agora
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05, backgroundColor: '#13235a' }}
             className="px-8 py-3 rounded-full font-bold text-lg bg-white/10 text-white border border-[#0D4FF7] transition-all focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] focus:ring-offset-2"
+            onClick={() => setShowDemo(true)}
           >
             Assista à demo
           </motion.button>
         </motion.div>
       </div>
+      {/* Modal de vídeo demo */}
+      {showDemo && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <div className="relative w-full max-w-2xl aspect-video bg-black rounded-xl shadow-2xl flex items-center justify-center">
+            <button
+              className="absolute top-2 right-2 text-white text-2xl font-bold bg-black/40 rounded-full px-3 py-1 hover:bg-black/80 transition"
+              onClick={() => setShowDemo(false)}
+              aria-label="Fechar vídeo"
+            >
+              ×
+            </button>
+            <iframe
+              className="w-full h-full rounded-xl"
+              src="https://www.youtube.com/embed/2e6o5p2A9bA" // Troque pelo link do vídeo demo real
+              title="Demonstração UMDÊ CRM"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </motion.div>
+      )}
     </section>
-  )
+  );
 } 
