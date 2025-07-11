@@ -138,3 +138,77 @@ Abra [http://localhost:3000](http://localhost:3000) no navegador para ver o resu
 ---
 
 > O conteúdo do `frontend/README.md` foi incorporado neste arquivo mestre. O arquivo pode ser removido do projeto. 
+
+---
+
+## 13. Diretrizes Avançadas de Produto — UMDÊ VENDAS (FIXAS)
+
+### 13.1. Experiência Visual e Motion (Referência: Tradesflow.io)
+- Interface escura predominante, com azul neon (`#0D4FF7`) como cor de ação
+- Animações suaves baseadas em scroll, zoom, fade, tilt e microefeitos
+- Interações responsivas com transições e microefeitos em botões, cards e seções
+- Layout responsivo, storytelling visual e carrosséis animados
+- Botões e ícones: glassmorphism leve ou flat, com hover azul neon e efeito glow
+- Motion effects via GSAP, Framer Motion ou ScrollTrigger
+- Skeleton UI para carregamento de dados
+- Feedback visual em todos os cliques
+- Suporte nativo a dark mode, performance otimizada
+
+### 13.2. Identidade Visual UMDÊ (FIXA)
+- Estilo dark-first, minimalista e sofisticado
+- Paleta:
+  - Fundo: preto `#000000` e cinza escuro
+  - Cor de ação principal: azul escuro `#0D4FF7`
+  - Secundárias: branco `#FFFFFF`, cinza claro `#E5E5E5` (apenas para contraste)
+- Tipografia: Proxima Nova (ou Inter fallback), títulos extrabold/black, corpo regular/light
+- Áreas claras apenas em destaques visuais específicos (ex: mockups)
+- Alto contraste, clareza e acessibilidade
+
+### 13.3. Estrutura da Home Page (Dark Style + Tradesflow.io)
+- Hero escuro com azul pulsando
+- Título animado: “O CRM mais poderoso para o mercado imobiliário”
+- Botões animados: “Comece agora” e “Assista à demo”
+- Mockup animado da interface (zoom-in, shadow flutuante)
+- Cards de destaque com microanimações ao scroll (captação de leads, pré-vendas, WhatsApp, Canal Pro)
+- Carrossel com UI real da plataforma, motion effects (slide lateral, blur suave)
+- Depoimentos com fundo azul escuro e texto claro
+- CTA final: fundo 100% azul escuro, bordas animadas, botão “Criar Conta Gratuita” com efeito glow
+
+### 13.4. Estrutura Interna do CRM (Referência: Kommo CRM)
+- Painel Kanban com funil de leads (drag-and-drop, etapas personalizáveis: Novo, Qualificado, Proposta, Fechado)
+- Cards de lead: nome, fonte, valor, botões rápidos (WhatsApp, Agendar, Nota, Email)
+- Dashboard: indicadores, cards de desempenho, gráficos de conversão/produtividade, ranking de pré-vendedores
+- Central de mensagens: conversas em tempo real (WhatsApp, Email, Canal Pro), filtros por status/agente/última mensagem, integração com histórico da lead
+- Cadastro e enriquecimento de leads: busca por CNPJ, extração via API Assertiva, cadastro automático de sócios
+- Gestão de agentes: criar, editar, desativar, atribuir metas/leads, monitorar atividade em tempo real
+- Automação de tarefas e metas de pré-venda
+
+### 13.5. Funcionalidades UX Avançadas
+- Motion effects em todos os elementos interativos
+- Efeitos hover, tap, drag aplicados com suavidade
+- Skeleton UI no carregamento
+- Feedback visual em todas as ações
+- Layout fluido, conversacional e responsivo
+- Fidelidade total à identidade UMDÊ
+- Experiência web premium: velocidade, transições, animações
+
+## 14. Prioridades Absolutas (FIXAS)
+- Layout escuro, moderno e sofisticado
+- Design fluido, conversacional e responsivo
+- Fidelidade total à identidade visual UMDÊ
+- Estrutura de CRM funcional e responsiva (Kommo Style)
+- Experiência web premium (UX, performance, motion)
+- Lógica de vendas eficiente e intuitiva
+- Aplicar todas as diretrizes acima em cada etapa do projeto
+
+---
+
+> Estas diretrizes são FIXAS e obrigatórias para todo o time. Qualquer decisão de design, UX, UI, front-end ou produto deve ser 100% alinhada a estas regras e referências. Consulte sempre este documento antes de iniciar qualquer tarefa ou entrega. 
+
+---
+
+## 15. Proibição de Emojis (FIXA)
+- É terminantemente proibido o uso de emojis (coloridos ou não) em qualquer parte do projeto, incluindo ícones de interface, textos, botões, títulos e componentes visuais.
+- Todos os ícones devem ser vetoriais (SVG), minimalistas, alinhados à identidade visual UMDÊ e preferencialmente monocromáticos ou com a paleta oficial.
+- Exemplos de bibliotecas permitidas: Heroicons, Lucide, Phosphor, Feather, ou SVGs próprios.
+- Esta regra é obrigatória para todo o time e para todas as entregas. 
