@@ -8,7 +8,7 @@ export default function HeroSection() {
   const router = useRouter();
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[70vh] py-16 text-center overflow-hidden bg-gradient-to-b from-[#0D1A3A] to-[#000000]">
+    <section className="relative flex flex-col items-center justify-center min-h-[70vh] sm:py-16 py-8 text-center overflow-hidden bg-gradient-to-b from-[#0D1A3A] to-[#000000]">
       {/* Azul pulsando no fundo */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -17,7 +17,7 @@ export default function HeroSection() {
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         style={{ background: 'radial-gradient(circle at 50% 40%, #0D4FF7 0%, transparent 70%)' }}
       />
-      <div className="relative z-10 flex flex-col items-center gap-8">
+      <div className="relative z-10 flex flex-col items-center gap-6 sm:gap-8">
         <motion.h1
           className="text-4xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#0D4FF7] to-white drop-shadow-lg"
           initial={{ opacity: 0, y: 40 }}
