@@ -212,3 +212,7 @@ Abra [http://localhost:3000](http://localhost:3000) no navegador para ver o resu
 - Todos os ícones devem ser vetoriais (SVG), minimalistas, alinhados à identidade visual UMDÊ e preferencialmente monocromáticos ou com a paleta oficial.
 - Exemplos de bibliotecas permitidas: Heroicons, Lucide, Phosphor, Feather, ou SVGs próprios.
 - Esta regra é obrigatória para todo o time e para todas as entregas. 
+
+---
+
+- Painel lateral de detalhamento ao clicar em qualquer item das páginas internas (referência: Notion.com) 

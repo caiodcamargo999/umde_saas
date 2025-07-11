@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 // SVG minimalista para cada item (placeholders, troque por Heroicons/Lucide depois)
 const icons = {
@@ -34,37 +35,66 @@ const navItems = [
   { label: "Dashboard", href: "/interno/dashboard", icon: icons.dashboard },
   { label: "Leads", href: "/interno/leads", icon: icons.leads },
   { label: "Imóveis", href: "/interno/imoveis", icon: icons.imoveis },
-  { label: "Oportunidades", href: "/interno/oportunidades", icon: icons.leads },
   { label: "Agentes", href: "/interno/agentes", icon: icons.agentes },
   { label: "Investidores", href: "/interno/investidores", icon: icons.investidores },
   { label: "Contratos", href: "/interno/contratos", icon: icons.contratos },
-  { label: "Performance", href: "/interno/performance", icon: icons.performance },
   { label: "Configurações", href: "/interno/configuracoes", icon: icons.configuracoes },
 ];
 
 export default function Sidebar() {
   const pathname = usePathname();
   return (
-    <aside className="hidden md:flex flex-col w-32 bg-[#101C3A]/90 border-r border-[#0D4FF7]/20 backdrop-blur-lg pt-0 items-center gap-2 shadow-2xl z-20 min-h-screen fixed left-0 top-0 h-screen">
-      {/* Logo Umdê no topo, ocupando quase toda a largura do retângulo */}
-      <div className="w-full flex items-center justify-center h-32 bg-transparent mb-6">
-        <img src="/logo/umde-icon.png" alt="Logo Umdê" className="object-contain w-24 h-24 md:w-28 md:h-28" style={{maxHeight:'110px', maxWidth:'110px'}} />
-      </div>
-      <nav className="flex flex-col gap-2 w-full items-center">
-        {navItems.map((item) => {
-          const active = pathname === item.href;
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`group flex flex-col items-center gap-1 px-2 py-3 rounded-xl transition-all text-xs font-semibold w-20 hover:bg-[#0D4FF7]/10 ${active ? "bg-[#0D4FF7]/30 text-[#0D4FF7] shadow-[0_0_8px_#0D4FF7]" : "text-white/70"}`}
-            >
-              <span className={`text-xl mb-1 transition-colors ${active ? "text-[#0D4FF7]" : "text-white/60"}`}>{item.icon}</span>
-              <span className="text-xs font-medium truncate w-full text-center">{item.label}</span>
-            </Link>
-          );
-        })}
+    <>
+      {/* Sidebar Desktop */}
+      <aside className="hidden md:flex flex-col w-32 bg-[#101C3A]/90 border-r border-[#0D4FF7]/20 backdrop-blur-lg pt-0 items-center gap-2 shadow-2xl z-20 min-h-screen fixed left-0 top-0 h-screen">
+        {/* Logo Umdê no topo, ocupando quase toda a largura do retângulo */}
+        <div className="w-full flex items-center justify-center h-32 bg-transparent mb-6">
+          <Image src="/logo/umde-icon.png" alt="Logo Umdê" width={110} height={110} className="object-contain w-24 h-24 md:w-28 md:h-28" style={{maxHeight:'110px', maxWidth:'110px'}} priority />
+        </div>
+        <nav className="flex flex-col gap-2 w-full items-center">
+          {navItems.map((item) => {
+            const active = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`group flex flex-col items-center gap-1 px-2 py-3 rounded-xl transition-all text-xs font-semibold w-20 hover:bg-[#0D4FF7]/10 ${active ? "bg-[#0D4FF7]/30 text-[#0D4FF7] shadow-[0_0_8px_#0D4FF7]" : "text-white/70"}`}
+              >
+                <span className={`text-xl mb-1 transition-colors ${active ? "text-[#0D4FF7]" : "text-white/60"}`}>{item.icon}</span>
+                <span className="text-xs font-medium truncate w-full text-center">{item.label}</span>
+              </Link>
+            );
+          })}
+        </nav>
+      </aside>
+
+      {/* Sidebar Mobile - Bottom Navigation */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#101C3A]/95 backdrop-blur-lg border-t border-[#0D4FF7]/20 z-50">
+        <div className="flex justify-around items-center py-2 px-4">
+          {navItems.slice(0, 5).map((item) => {
+            const active = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition-all ${active ? "text-[#0D4FF7]" : "text-white/70"}`}
+              >
+                <span className={`text-lg transition-colors ${active ? "text-[#0D4FF7]" : "text-white/60"}`}>{item.icon}</span>
+                <span className="text-xs font-medium">{item.label}</span>
+              </Link>
+            );
+          })}
+        </div>
       </nav>
-    </aside>
+
+      {/* Mobile Menu Button for More Items */}
+      <div className="md:hidden fixed bottom-0 right-4 z-50 mb-20">
+        <button className="w-12 h-12 bg-[#0D4FF7] rounded-full shadow-lg flex items-center justify-center">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" className="text-white">
+            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" strokeWidth="2"/>
+          </svg>
+        </button>
+      </div>
+    </>
   );
 } 

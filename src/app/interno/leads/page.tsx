@@ -57,6 +57,10 @@ export default function LeadsPage() {
     setLeads(newLeads);
   }
 
+  // Filtros dinâmicos
+  const [filtroEtapa, setFiltroEtapa] = useState<string>("");
+  const leadsFiltrados = filtroEtapa ? leads.filter(l => l.etapa === filtroEtapa) : leads;
+
   return (
     <div className="w-full max-w-6xl mx-auto py-6">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
@@ -99,7 +103,7 @@ export default function LeadsPage() {
               </tr>
             </thead>
             <tbody>
-              {leads.map((lead, i) => (
+              {leadsFiltrados.map((lead) => (
                 <tr key={lead.id} className="border-t border-white/10 hover:bg-[#0D4FF7]/5 transition">
                   <td className="px-6 py-4 font-semibold text-white/90">{lead.nome}</td>
                   <td className="px-6 py-4">
@@ -124,7 +128,7 @@ export default function LeadsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            {etapas.map((etapa, idx) => (
+            {etapas.map((etapa) => (
               <Droppable droppableId={etapa} key={etapa}>
                 {(provided, snapshot) => (
                   <div
@@ -177,12 +181,23 @@ export default function LeadsPage() {
               onClick={() => setSelectedLead(null)}
               aria-label="Fechar"
             >×</button>
-            <h2 className="text-2xl font-extrabold text-[#0D4FF7] mb-2">{selectedLead.nome}</h2>
-            <div className="text-white/80 mb-4">{selectedLead.email} • {selectedLead.telefone}</div>
+            {/* Edição inline */}
+            <input
+              className="text-2xl font-extrabold text-[#0D4FF7] mb-2 bg-transparent border-b border-[#0D4FF7]/40 focus:outline-none focus:border-[#0D4FF7] transition"
+              value={selectedLead.nome}
+              onChange={e => setSelectedLead({ ...selectedLead, nome: e.target.value })}
+            />
+            <input
+              className="text-white/80 mb-4 bg-transparent border-b border-[#0D4FF7]/20 focus:outline-none focus:border-[#0D4FF7] transition"
+              value={selectedLead.email}
+              onChange={e => setSelectedLead({ ...selectedLead, email: e.target.value })}
+            />
             <div className="flex gap-2 mb-4">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#0D4FF7]/20 text-[#0D4FF7]">{selectedLead.status}</span>
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-white">{selectedLead.origem}</span>
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-white">{selectedLead.valor}</span>
+              <label className="text-white/70 text-sm">Filtrar etapa:</label>
+              <select value={filtroEtapa} onChange={e => setFiltroEtapa(e.target.value)} className="bg-[#0D1A3A] border border-[#0D4FF7]/30 text-white rounded px-2 py-1">
+                <option value="">Todas</option>
+                {etapas.map(etapa => <option key={etapa} value={etapa}>{etapa}</option>)}
+              </select>
             </div>
             <div className="mb-6">
               <h3 className="text-lg font-bold text-white/80 mb-2">Histórico</h3>
