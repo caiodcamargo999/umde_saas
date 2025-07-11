@@ -68,33 +68,33 @@ export default function Sidebar() {
         </nav>
       </aside>
 
-      {/* Sidebar Mobile - Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#101C3A]/95 backdrop-blur-lg border-t border-[#0D4FF7]/20 z-50">
-        <div className="flex justify-around items-center py-2 px-4">
-          {navItems.slice(0, 5).map((item) => {
-            const active = pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition-all ${active ? "text-[#0D4FF7]" : "text-white/70"}`}
-              >
-                <span className={`text-lg transition-colors ${active ? "text-[#0D4FF7]" : "text-white/60"}`}>{item.icon}</span>
-                <span className="text-xs font-medium">{item.label}</span>
-              </Link>
-            );
-          })}
+      {/* Menu Global Mobile - Sticky Top */}
+      <header className="md:hidden sticky top-0 left-0 right-0 z-40 bg-[#101C3A]/95 border-b border-[#0D4FF7]/20 backdrop-blur-lg shadow-lg flex items-center justify-between px-2 py-1">
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <Image src="/logo/umde-icon.png" alt="Logo Umdê" width={36} height={36} className="object-contain w-9 h-9" priority />
+          <span className="font-bold text-lg tracking-tight text-white/90">UMDÊ</span>
         </div>
-      </nav>
-
-      {/* Mobile Menu Button for More Items */}
-      <div className="md:hidden fixed bottom-0 right-4 z-50 mb-20">
-        <button className="w-12 h-12 bg-[#0D4FF7] rounded-full shadow-lg flex items-center justify-center">
-          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" className="text-white">
-            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" strokeWidth="2"/>
-          </svg>
-        </button>
-      </div>
+        {/* Navegação horizontal scrollável se necessário */}
+        <nav className="flex-1 flex justify-center overflow-x-auto scrollbar-none">
+          <ul className="flex gap-2 sm:gap-4 items-center">
+            {navItems.map((item) => {
+              const active = pathname === item.href;
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`flex flex-col items-center px-2 py-1 rounded-lg transition-all duration-200 ${active ? "text-[#0D4FF7] scale-110" : "text-white/70 hover:text-[#0D4FF7]"}`}
+                  >
+                    <span className="text-xl">{item.icon}</span>
+                    <span className="text-[10px] font-medium leading-tight">{item.label}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </header>
     </>
   );
 } 

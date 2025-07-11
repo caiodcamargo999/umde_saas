@@ -153,17 +153,17 @@ export default function ContratosPage() {
 
   return (
     <div className="w-full max-w-6xl mx-auto py-2 sm:py-4 md:py-6 pb-20 md:pb-6">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4 mb-6 md:mb-8">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white/90 tracking-tight">Contratos</h1>
-        <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+      <div className="flex flex-col gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
+        <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-white/90 tracking-tight">Contratos</h1>
+        <div className="flex flex-col sm:flex-row gap-2 w-full">
           <button 
-            className="px-4 py-2 rounded-lg bg-[#0D4FF7] text-white font-bold shadow-lg hover:bg-blue-700 transition-all focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] text-sm"
+            className="px-3 sm:px-4 py-2 rounded-lg bg-[#0D4FF7] text-white font-bold shadow-lg hover:bg-blue-700 transition-all focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] text-sm"
             onClick={() => setShowCreateModal(true)}
           >
             + Criar Contrato com AI
           </button>
           <button 
-            className="px-4 py-2 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm"
+            className="px-3 sm:px-4 py-2 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm"
             onClick={() => setShowModelosModal(true)}
           >
             Modelos de Contrato
@@ -172,24 +172,24 @@ export default function ContratosPage() {
       </div>
 
       {/* Filtros Avançados */}
-      <div className="mb-6 p-4 rounded-xl bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/20 backdrop-blur-md">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="mb-4 sm:mb-6 p-3 sm:p-4 rounded-xl bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/20 backdrop-blur-md">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           <div>
-            <label className="text-white/70 text-sm mb-1 block">Buscar por número/cliente</label>
+            <label className="text-white/70 text-xs sm:text-sm mb-1 block">Buscar por número/cliente</label>
             <input
               type="text"
               placeholder="Digite para buscar..."
               value={filtroNumero}
               onChange={(e) => setFiltroNumero(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg bg-white/10 text-white placeholder-white/50 border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition"
+              className="w-full px-2.5 sm:px-3 py-2 rounded-lg bg-white/10 text-white placeholder-white/50 border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition text-sm"
             />
           </div>
           
           <div>
-            <label className="text-white/70 text-sm mb-1 block">Status</label>
+            <label className="text-white/70 text-xs sm:text-sm mb-1 block">Status</label>
             <div className="flex gap-2">
               {["Ativo", "Pendente", "Finalizado"].map(status => (
-                <label key={status} className="flex items-center gap-2 text-white/70 text-sm">
+                <label key={status} className="flex items-center gap-1.5 sm:gap-2 text-white/70 text-xs sm:text-sm">
                   <input
                     type="checkbox"
                     checked={filtroStatus.includes(status)}
@@ -209,10 +209,10 @@ export default function ContratosPage() {
           </div>
 
           <div>
-            <label className="text-white/70 text-sm mb-1 block">Tipo</label>
+            <label className="text-white/70 text-xs sm:text-sm mb-1 block">Tipo</label>
             <div className="flex gap-2">
               {["Venda", "Aluguel", "Parceria"].map(tipo => (
-                <label key={tipo} className="flex items-center gap-2 text-white/70 text-sm">
+                <label key={tipo} className="flex items-center gap-1.5 sm:gap-2 text-white/70 text-xs sm:text-sm">
                   <input
                     type="checkbox"
                     checked={filtroTipo.includes(tipo)}
@@ -232,10 +232,10 @@ export default function ContratosPage() {
           </div>
 
           <div>
-            <label className="text-white/70 text-sm mb-1 block">Região</label>
+            <label className="text-white/70 text-xs sm:text-sm mb-1 block">Região</label>
             <div className="flex gap-2">
               {["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Florianópolis"].map(regiao => (
-                <label key={regiao} className="flex items-center gap-2 text-white/70 text-sm">
+                <label key={regiao} className="flex items-center gap-1.5 sm:gap-2 text-white/70 text-xs sm:text-sm">
                   <input
                     type="checkbox"
                     checked={filtroRegiao.includes(regiao)}
@@ -255,31 +255,31 @@ export default function ContratosPage() {
           </div>
 
           <div>
-            <label className="text-white/70 text-sm mb-1 block">Valor (mín)</label>
+            <label className="text-white/70 text-xs sm:text-sm mb-1 block">Valor (mín)</label>
             <input
               type="text"
               placeholder="R$ 0"
               value={filtroValorMin}
               onChange={(e) => setFiltroValorMin(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg bg-white/10 text-white placeholder-white/50 border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition"
+              className="w-full px-2.5 sm:px-3 py-2 rounded-lg bg-white/10 text-white placeholder-white/50 border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition text-sm"
             />
           </div>
 
           <div>
-            <label className="text-white/70 text-sm mb-1 block">Valor (máx)</label>
+            <label className="text-white/70 text-xs sm:text-sm mb-1 block">Valor (máx)</label>
             <input
               type="text"
               placeholder="R$ 10M"
               value={filtroValorMax}
               onChange={(e) => setFiltroValorMax(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg bg-white/10 text-white placeholder-white/50 border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition"
+              className="w-full px-2.5 sm:px-3 py-2 rounded-lg bg-white/10 text-white placeholder-white/50 border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition text-sm"
             />
           </div>
 
           <div className="flex items-end">
             <button
               onClick={limparFiltros}
-              className="px-4 py-2 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all"
+              className="px-3 sm:px-4 py-2 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm"
             >
               Limpar Filtros
             </button>
@@ -289,47 +289,47 @@ export default function ContratosPage() {
 
       {/* Seção CRIAR - Geração de Contratos com AI */}
       <motion.div
-        className="mb-6 md:mb-8 p-4 md:p-6 rounded-2xl bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/20 backdrop-blur-md"
+        className="mb-4 sm:mb-6 md:mb-8 p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/20 backdrop-blur-md"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <div className="flex items-center gap-3 mb-4 md:mb-6">
-          <div className="w-8 h-8 md:w-10 md:h-10 bg-[#0D4FF7]/20 rounded-xl flex items-center justify-center">
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" className="text-[#0D4FF7] md:w-5 md:h-5">
+        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-[#0D4FF7]/20 rounded-lg sm:rounded-xl flex items-center justify-center">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" className="text-[#0D4FF7] sm:w-4 sm:h-4 md:w-5 md:h-5">
               <path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2"/>
             </svg>
           </div>
           <div>
-            <h2 className="text-lg md:text-xl font-bold text-white">CRIAR</h2>
-            <p className="text-white/70 text-xs md:text-sm">Digite o que você quer e nossa AI gera o contrato completo</p>
+            <h2 className="text-base sm:text-lg md:text-xl font-bold text-white">CRIAR</h2>
+            <p className="text-white/70 text-xs sm:text-sm">Digite o que você quer e nossa AI gera o contrato completo</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-          <div className="space-y-3 md:space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+          <div className="space-y-2 sm:space-y-3 md:space-y-4">
             <div>
-              <label className="text-white/80 text-xs md:text-sm font-bold mb-2 block">Descreva o que você precisa</label>
+              <label className="text-white/80 text-xs sm:text-sm font-bold mb-1 sm:mb-2 block">Descreva o que você precisa</label>
               <textarea
-                className="w-full px-3 md:px-4 py-2 md:py-3 rounded-xl bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition resize-none text-sm"
+                className="w-full px-2.5 sm:px-3 md:px-4 py-2 md:py-3 rounded-lg sm:rounded-xl bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition resize-none text-sm"
                 rows={3}
                 placeholder="Ex: Preciso de um contrato de venda de apartamento de 2 quartos em São Paulo, valor R$ 500.000, vendedor João Silva CPF 123.456.789-00, comprador Maria Santos CPF 987.654.321-00..."
               />
             </div>
             
             <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
-              <button className="flex-1 px-3 md:px-4 py-2 md:py-3 rounded-xl bg-[#0D4FF7] text-white font-bold hover:bg-[#0D4FF7]/80 transition-all shadow-lg text-sm">
+              <button className="flex-1 px-2.5 sm:px-3 md:px-4 py-2 md:py-3 rounded-lg sm:rounded-xl bg-[#0D4FF7] text-white font-bold hover:bg-[#0D4FF7]/80 transition-all shadow-lg text-sm">
                 Gerar Contrato com AI
               </button>
-              <button className="px-3 md:px-4 py-2 md:py-3 rounded-xl bg-white/10 text-white border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm">
+              <button className="px-2.5 sm:px-3 md:px-4 py-2 md:py-3 rounded-lg sm:rounded-xl bg-white/10 text-white border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm">
                 Usar Modelo
               </button>
             </div>
           </div>
 
-          <div className="bg-[#1A2332]/50 rounded-xl p-3 md:p-4 border border-[#0D4FF7]/10">
-            <h3 className="text-white font-semibold mb-2 md:mb-3 text-sm md:text-base">Exemplos de prompts</h3>
-            <div className="space-y-2 text-xs md:text-sm">
+          <div className="bg-[#1A2332]/50 rounded-lg sm:rounded-xl p-2.5 sm:p-3 md:p-4 border border-[#0D4FF7]/10">
+            <h3 className="text-white font-semibold mb-2 md:mb-3 text-xs sm:text-sm md:text-base">Exemplos de prompts</h3>
+            <div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
               <div className="p-2 md:p-3 bg-[#0D4FF7]/10 rounded-lg border border-[#0D4FF7]/20">
                 <p className="text-white/90">&quot;Contrato de aluguel de sala comercial por 24 meses, valor R$ 5.000/mês&quot;</p>
               </div>
@@ -345,40 +345,40 @@ export default function ContratosPage() {
       </motion.div>
 
       <motion.div
-        className="overflow-x-auto rounded-2xl shadow-xl bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/20 backdrop-blur-md"
+        className="overflow-x-auto rounded-xl sm:rounded-2xl shadow-xl bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/20 backdrop-blur-md"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
         <table className="min-w-full text-left">
           <thead>
-            <tr className="text-[#0D4FF7] text-sm font-bold">
-              <th className="px-6 py-4">Número</th>
-              <th className="px-6 py-4">Cliente</th>
-              <th className="px-6 py-4">Status</th>
-              <th className="px-6 py-4">Tipo</th>
-              <th className="px-6 py-4">Valor</th>
-              <th className="px-6 py-4">Região</th>
-              <th className="px-6 py-4">Modelo</th>
-              <th className="px-6 py-4 text-right">Ações</th>
+            <tr className="text-[#0D4FF7] text-xs sm:text-sm font-bold">
+              <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Número</th>
+              <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Cliente</th>
+              <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Status</th>
+              <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Tipo</th>
+              <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Valor</th>
+              <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Região</th>
+              <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Modelo</th>
+              <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-right">Ações</th>
             </tr>
           </thead>
           <tbody>
             {contratosFiltrados.map(contrato => (
               <tr key={contrato.id} className="border-t border-white/10 hover:bg-[#0D4FF7]/5 transition cursor-pointer" onClick={() => setSelectedContrato(contrato)}>
-                <td className="px-6 py-4 font-semibold text-white/90">{contrato.numero}</td>
-                <td className="px-6 py-4 text-white/70">{contrato.cliente}</td>
-                <td className="px-6 py-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${contrato.status === 'Ativo' ? 'bg-[#0D4FF7]/20 text-[#0D4FF7]' : contrato.status === 'Finalizado' ? 'bg-green-600/30 text-green-400' : 'bg-yellow-600/20 text-yellow-300'}`}>{contrato.status}</span>
+                <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 font-semibold text-white/90 text-xs sm:text-sm">{contrato.numero}</td>
+                <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-white/70 text-xs sm:text-sm">{contrato.cliente}</td>
+                <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">
+                  <span className={`px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold ${contrato.status === 'Ativo' ? 'bg-[#0D4FF7]/20 text-[#0D4FF7]' : contrato.status === 'Finalizado' ? 'bg-green-600/30 text-green-400' : 'bg-yellow-600/20 text-yellow-300'}`}>{contrato.status}</span>
                 </td>
-                <td className="px-6 py-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${contrato.tipo === 'Venda' ? 'bg-[#0D4FF7]/20 text-[#0D4FF7]' : contrato.tipo === 'Aluguel' ? 'bg-green-600/30 text-green-400' : 'bg-purple-600/30 text-purple-400'}`}>{contrato.tipo}</span>
+                <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">
+                  <span className={`px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold ${contrato.tipo === 'Venda' ? 'bg-[#0D4FF7]/20 text-[#0D4FF7]' : contrato.tipo === 'Aluguel' ? 'bg-green-600/30 text-green-400' : 'bg-purple-600/30 text-purple-400'}`}>{contrato.tipo}</span>
                 </td>
-                <td className="px-6 py-4 text-white/90">{contrato.valor}</td>
-                <td className="px-6 py-4 text-white/70">{contrato.regiao}</td>
-                <td className="px-6 py-4 text-white/70 text-xs">{contrato.modeloUsado}</td>
-                <td className="px-6 py-4 text-right">
-                  <button className="px-3 py-1 rounded-lg bg-[#0D4FF7]/80 text-white text-xs font-bold shadow hover:bg-[#0D4FF7] transition-all" onClick={e => {e.stopPropagation(); setSelectedContrato(contrato);}}>Ver detalhes</button>
+                <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-white/90 text-xs sm:text-sm">{contrato.valor}</td>
+                <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-white/70 text-xs sm:text-sm">{contrato.regiao}</td>
+                <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-white/70 text-xs">{contrato.modeloUsado}</td>
+                <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-right">
+                  <button className="px-2 sm:px-3 py-1 rounded-lg bg-[#0D4FF7]/80 text-white text-xs font-bold shadow hover:bg-[#0D4FF7] transition-all" onClick={e => {e.stopPropagation(); setSelectedContrato(contrato);}}>Ver detalhes</button>
                 </td>
               </tr>
             ))}
@@ -389,33 +389,33 @@ export default function ContratosPage() {
       {/* Modal de Criação de Contrato com AI */}
       {showCreateModal && (
         <motion.div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-2 sm:p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/30 rounded-2xl p-6 w-full max-w-3xl max-h-[90vh] overflow-y-auto"
+            className="bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 w-full max-w-3xl max-h-[90vh] overflow-y-auto"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
           >
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-extrabold text-[#0D4FF7]">Criar Contrato com AI</h2>
+            <div className="flex justify-between items-center mb-4 sm:mb-6">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#0D4FF7]">Criar Contrato com AI</h2>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="text-white/60 text-2xl font-bold hover:text-white transition"
+                className="text-white/60 text-xl sm:text-2xl font-bold hover:text-white transition"
               >×</button>
             </div>
 
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="text-white/80 text-sm font-bold mb-2 block">Tipo de Contrato</label>
+                  <label className="text-white/80 text-xs sm:text-sm font-bold mb-1 sm:mb-2 block">Tipo de Contrato</label>
                   <select
                     value={newContrato.tipo}
                     onChange={(e) => setNewContrato({...newContrato, tipo: e.target.value})}
-                    className="w-full px-4 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition"
+                    className="w-full px-3 sm:px-4 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition text-sm"
                   >
                     <option value="Venda">Venda</option>
                     <option value="Aluguel">Aluguel</option>
@@ -424,11 +424,11 @@ export default function ContratosPage() {
                 </div>
 
                 <div>
-                  <label className="text-white/80 text-sm font-bold mb-2 block">Região</label>
+                  <label className="text-white/80 text-xs sm:text-sm font-bold mb-1 sm:mb-2 block">Região</label>
                   <select
                     value={newContrato.regiao}
                     onChange={(e) => setNewContrato({...newContrato, regiao: e.target.value})}
-                    className="w-full px-4 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition"
+                    className="w-full px-3 sm:px-4 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition text-sm"
                   >
                     <option value="São Paulo">São Paulo</option>
                     <option value="Rio de Janeiro">Rio de Janeiro</option>
@@ -439,67 +439,67 @@ export default function ContratosPage() {
               </div>
 
               <div>
-                <label className="text-white/80 text-sm font-bold mb-2 block">Descreva o Acordo</label>
+                <label className="text-white/80 text-xs sm:text-sm font-bold mb-1 sm:mb-2 block">Descreva o Acordo</label>
                 <textarea
                   value={newContrato.acordo}
                   onChange={(e) => setNewContrato({...newContrato, acordo: e.target.value})}
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition resize-none"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition resize-none text-sm"
                   rows={3}
                   placeholder="Descreva o acordo que deseja formalizar (ex: venda de apartamento, aluguel de sala comercial, parceria para desenvolvimento, etc.)"
                 />
               </div>
 
               <div>
-                <label className="text-white/80 text-sm font-bold mb-2 block">Dados das Partes</label>
+                <label className="text-white/80 text-xs sm:text-sm font-bold mb-1 sm:mb-2 block">Dados das Partes</label>
                 <textarea
                   value={newContrato.dadosPartes}
                   onChange={(e) => setNewContrato({...newContrato, dadosPartes: e.target.value})}
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition resize-none"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition resize-none text-sm"
                   rows={4}
                   placeholder="Informe os dados das partes envolvidas (nomes, CPF/CNPJ, endereços, etc.)"
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="text-white/80 text-sm font-bold mb-2 block">Cliente Principal</label>
+                  <label className="text-white/80 text-xs sm:text-sm font-bold mb-1 sm:mb-2 block">Cliente Principal</label>
                   <input
                     type="text"
                     value={newContrato.cliente}
                     onChange={(e) => setNewContrato({...newContrato, cliente: e.target.value})}
-                    className="w-full px-4 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition"
+                    className="w-full px-3 sm:px-4 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition text-sm"
                     placeholder="Nome do cliente principal"
                   />
                 </div>
 
                 <div>
-                  <label className="text-white/80 text-sm font-bold mb-2 block">Valor</label>
+                  <label className="text-white/80 text-xs sm:text-sm font-bold mb-1 sm:mb-2 block">Valor</label>
                   <input
                     type="text"
                     value={newContrato.valor}
                     onChange={(e) => setNewContrato({...newContrato, valor: e.target.value})}
-                    className="w-full px-4 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition"
+                    className="w-full px-3 sm:px-4 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition text-sm"
                     placeholder="R$ 500.000"
                   />
                 </div>
               </div>
 
-              <div className="flex gap-3 pt-4">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-3 sm:pt-4">
                 <button
                   onClick={handleGerarContratoAI}
-                  className="flex-1 px-6 py-3 rounded-lg bg-[#0D4FF7] text-white font-bold shadow-lg hover:bg-blue-700 transition-all"
+                  className="flex-1 px-4 sm:px-6 py-2 sm:py-3 rounded-lg bg-[#0D4FF7] text-white font-bold shadow-lg hover:bg-blue-700 transition-all text-sm"
                 >
                   Gerar Contrato com AI
                 </button>
                 <button
                   onClick={() => setShowModelosModal(true)}
-                  className="px-6 py-3 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all"
+                  className="px-4 sm:px-6 py-2 sm:py-3 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm"
                 >
                   Usar Modelo
                 </button>
                 <button
                   onClick={() => setShowCreateModal(false)}
-                  className="px-6 py-3 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all"
+                  className="px-4 sm:px-6 py-2 sm:py-3 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm"
                 >
                   Cancelar
                 </button>
@@ -512,42 +512,45 @@ export default function ContratosPage() {
       {/* Modal de Modelos de Contrato */}
       {showModelosModal && (
         <motion.div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-2 sm:p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/30 rounded-2xl p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+            className="bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
           >
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-extrabold text-[#0D4FF7]">Modelos de Contrato</h2>
+            <div className="flex justify-between items-center mb-4 sm:mb-6">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#0D4FF7]">Modelos de Contrato</h2>
               <button
                 onClick={() => setShowModelosModal(false)}
-                className="text-white/60 text-2xl font-bold hover:text-white transition"
+                className="text-white/60 text-xl sm:text-2xl font-bold hover:text-white transition"
               >×</button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {modelosContrato.map(modelo => (
-                <div key={modelo.id} className="p-4 rounded-xl bg-white/5 border border-[#0D4FF7]/20 hover:border-[#0D4FF7]/40 transition-all">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-lg font-bold text-white/90">{modelo.nome}</h3>
-                    <span className={`px-2 py-1 rounded-full text-xs font-bold ${modelo.tipo === 'Venda' ? 'bg-[#0D4FF7]/20 text-[#0D4FF7]' : modelo.tipo === 'Aluguel' ? 'bg-green-600/30 text-green-400' : 'bg-purple-600/30 text-purple-400'}`}>
-                      {modelo.tipo}
-                    </span>
+                <div key={modelo.id} className="bg-[#1A2332]/50 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-[#0D4FF7]/20 hover:border-[#0D4FF7]/40 transition-all cursor-pointer" onClick={() => handleUsarModelo(modelo)}>
+                  <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#0D4FF7]/20 rounded-lg flex items-center justify-center">
+                      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" className="text-[#0D4FF7] sm:w-5 sm:h-5">
+                        <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="2"/>
+                        <path d="M8 2v4M16 2v4" stroke="currentColor" strokeWidth="2"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-semibold text-sm sm:text-base">{modelo.nome}</h3>
+                      <p className="text-white/70 text-xs sm:text-sm">{modelo.tipo}</p>
+                    </div>
                   </div>
-                  <p className="text-white/70 text-sm mb-3">{modelo.descricao}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-white/50 text-xs">{modelo.regiao}</span>
-                    <button
-                      onClick={() => handleUsarModelo(modelo)}
-                      className="px-4 py-2 rounded-lg bg-[#0D4FF7] text-white text-sm font-bold hover:bg-blue-700 transition-all"
-                    >
-                      Usar Modelo
+                  <p className="text-white/80 text-xs sm:text-sm mb-2 sm:mb-3">{modelo.descricao}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[#0D4FF7] text-xs sm:text-sm font-medium">{modelo.regiao}</span>
+                    <button className="px-2 sm:px-3 py-1 rounded-lg bg-[#0D4FF7]/20 text-[#0D4FF7] text-xs font-bold hover:bg-[#0D4FF7]/30 transition-all">
+                      Usar
                     </button>
                   </div>
                 </div>
@@ -560,70 +563,71 @@ export default function ContratosPage() {
       {/* Painel lateral de detalhamento do contrato */}
       {selectedContrato && (
         <motion.div
-          className="fixed top-0 right-0 h-full w-full max-w-md bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border-l border-[#0D4FF7]/30 shadow-2xl z-50 flex flex-col p-8"
+          className="fixed top-0 right-0 h-full w-full sm:max-w-md bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border-l border-[#0D4FF7]/30 shadow-2xl z-50 flex flex-col p-3 sm:p-4 md:p-8"
           initial={{ x: "100%" }}
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
           <button
-            className="absolute top-4 right-4 text-white/60 text-2xl font-bold hover:text-white transition"
+            className="absolute top-2 sm:top-4 right-2 sm:right-4 text-white/60 text-xl sm:text-2xl font-bold hover:text-white transition"
             onClick={() => setSelectedContrato(null)}
             aria-label="Fechar"
           >×</button>
           
           {/* Edição inline */}
           <input
-            className="text-2xl font-extrabold text-[#0D4FF7] mb-2 bg-transparent border-b border-[#0D4FF7]/40 focus:outline-none focus:border-[#0D4FF7] transition"
+            className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#0D4FF7] mb-2 bg-transparent border-b border-[#0D4FF7]/40 focus:outline-none focus:border-[#0D4FF7] transition text-sm sm:text-base"
             value={selectedContrato.numero}
             onChange={e => setSelectedContrato({ ...selectedContrato, numero: e.target.value })}
           />
           <input
-            className="text-white/80 mb-4 bg-transparent border-b border-[#0D4FF7]/20 focus:outline-none focus:border-[#0D4FF7] transition"
+            className="text-white/80 mb-3 sm:mb-4 bg-transparent border-b border-[#0D4FF7]/20 focus:outline-none focus:border-[#0D4FF7] transition text-sm"
             value={selectedContrato.cliente}
             onChange={e => setSelectedContrato({ ...selectedContrato, cliente: e.target.value })}
           />
           
-          <div className="flex gap-2 mb-4">
-            <span className={`px-3 py-1 rounded-full text-xs font-bold ${selectedContrato.status === 'Ativo' ? 'bg-[#0D4FF7]/20 text-[#0D4FF7]' : selectedContrato.status === 'Finalizado' ? 'bg-green-600/30 text-green-400' : 'bg-yellow-600/20 text-yellow-300'}`}>{selectedContrato.status}</span>
-            <span className={`px-3 py-1 rounded-full text-xs font-bold ${selectedContrato.tipo === 'Venda' ? 'bg-[#0D4FF7]/20 text-[#0D4FF7]' : selectedContrato.tipo === 'Aluguel' ? 'bg-green-600/30 text-green-400' : 'bg-purple-600/30 text-purple-400'}`}>{selectedContrato.tipo}</span>
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-white">{selectedContrato.valor}</span>
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-white">{selectedContrato.regiao}</span>
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+            <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold ${selectedContrato.status === 'Ativo' ? 'bg-[#0D4FF7]/20 text-[#0D4FF7]' : selectedContrato.status === 'Finalizado' ? 'bg-green-600/30 text-green-400' : 'bg-yellow-600/20 text-yellow-300'}`}>{selectedContrato.status}</span>
+            <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold ${selectedContrato.tipo === 'Venda' ? 'bg-[#0D4FF7]/20 text-[#0D4FF7]' : selectedContrato.tipo === 'Aluguel' ? 'bg-green-600/30 text-green-400' : 'bg-purple-600/30 text-purple-400'}`}>{selectedContrato.tipo}</span>
+            <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold bg-white/10 text-white">{selectedContrato.valor}</span>
+            <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold bg-white/10 text-white">{selectedContrato.regiao}</span>
           </div>
 
-          <div className="mb-4">
-            <label className="text-white/70 text-sm font-bold mb-2 block">Acordo</label>
+          <div className="mb-3 sm:mb-4">
+            <label className="text-white/70 text-xs sm:text-sm font-bold mb-1 sm:mb-2 block">Acordo</label>
             <textarea
               value={selectedContrato.acordo}
               onChange={e => setSelectedContrato({ ...selectedContrato, acordo: e.target.value })}
-              className="w-full px-3 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition resize-none"
-              rows={2}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="text-white/70 text-sm font-bold mb-2 block">Dados das Partes</label>
-            <textarea
-              value={selectedContrato.dadosPartes}
-              onChange={e => setSelectedContrato({ ...selectedContrato, dadosPartes: e.target.value })}
-              className="w-full px-3 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition resize-none"
+              className="w-full px-2.5 sm:px-3 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition resize-none text-sm"
               rows={3}
             />
           </div>
 
-          <div className="mb-6">
-            <label className="text-white/70 text-sm font-bold mb-2 block">Modelo Usado</label>
+          <div className="mb-3 sm:mb-4">
+            <label className="text-white/70 text-xs sm:text-sm font-bold mb-1 sm:mb-2 block">Dados das Partes</label>
+            <textarea
+              value={selectedContrato.dadosPartes}
+              onChange={e => setSelectedContrato({ ...selectedContrato, dadosPartes: e.target.value })}
+              className="w-full px-2.5 sm:px-3 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition resize-none text-sm"
+              rows={4}
+            />
+          </div>
+
+          <div className="mb-4 sm:mb-6">
+            <label className="text-white/70 text-xs sm:text-sm font-bold mb-1 sm:mb-2 block">Modelo Usado</label>
             <input
               type="text"
               value={selectedContrato.modeloUsado}
               onChange={e => setSelectedContrato({ ...selectedContrato, modeloUsado: e.target.value })}
-              className="w-full px-3 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition"
+              className="w-full px-2.5 sm:px-3 py-2 rounded-lg bg-white/10 text-white border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition text-sm"
             />
           </div>
 
-          <div className="flex gap-2 mt-auto">
-            <button className="px-4 py-2 rounded-lg bg-[#0D4FF7] text-white font-bold shadow hover:bg-blue-700 transition-all">Gerar PDF</button>
-            <button className="px-4 py-2 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all">Enviar para Assinatura</button>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto">
+            <button className="px-3 sm:px-4 py-2 rounded-lg bg-[#0D4FF7] text-white font-bold shadow hover:bg-blue-700 transition-all text-sm">Baixar PDF</button>
+            <button className="px-3 sm:px-4 py-2 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm">Editar</button>
+            <button className="px-3 sm:px-4 py-2 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm">Compartilhar</button>
           </div>
           
           {/* Estrutura para integração real-time futura (ex: useEffect para sync) */}
