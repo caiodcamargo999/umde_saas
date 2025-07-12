@@ -26,9 +26,9 @@ export const RecentActivity = ({ activities }: RecentActivityProps) => {
   return (
     <div className="bg-[#101C3A]/50 p-6 rounded-2xl border border-blue-500/20 h-full">
       <h3 className="text-lg font-semibold mb-4 text-white">Atividade Recente</h3>
-      <div className="space-y-4">
+      <div className="flex flex-col gap-4">
         {activities.map((activity) => (
-          <div key={activity.id} className="flex items-start gap-4">
+          <div key={activity.id} className="flex items-start gap-4 bg-[#101C3A]/70 rounded-xl p-3">
             <div className="bg-gray-800 p-2 rounded-full">
               {iconMap[activity.type as keyof typeof iconMap] || <Briefcase className="w-5 h-5 text-gray-400" />}
             </div>

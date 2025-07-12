@@ -51,7 +51,7 @@
 ## 5. Stack Tecnológica
 - **Frontend:** Next.js + TypeScript + Tailwind CSS
 - **UI:** React (Next.js), Tailwind para todo o styling
-- **Autenticação:** Firebase Auth (Google e Email/Senha)
+- **Autenticação:** Clerk (https://clerk.com/) — Google, Email/Senha, Social Login, MFA, Magic Link, etc.
 - **Controle de Versão:** Git + GitHub
 - **Deploy:** Netlify (deploy automático a partir do repositório do GitHub)
 - **Proibido:** HTML puro, jQuery, bibliotecas legadas
@@ -66,13 +66,15 @@
 
 ## 7. Fluxos de UX
 - **Autenticação:**
-  - Cadastro/login via Google ou Email/Senha
+  - Cadastro/login via Clerk (Google, Email/Senha, Social Login, Magic Link, MFA)
   - Verificação de email obrigatória antes do dashboard
   - Mensagens claras de feedback/erro
   - Rotas protegidas: só usuários verificados acessam `/dashboard`
 - **Navegação:**
   - Navegação clara e consistente
   - Destaque para página/aba atual
+  - **Referência de abertura/criação de páginas:**
+    - O padrão de abertura de novas páginas, painéis laterais e criação de conteúdo deve seguir a experiência do Notion.com (painéis laterais, overlays, UX fluida e moderna para criação/edição de páginas, navegação sem recarregar, etc.)
 
 ## 8. Arquitetura e Modelagem
 - Relacionar entidades: Imóveis, Leads, Agentes, Investidores, Contratos, Status

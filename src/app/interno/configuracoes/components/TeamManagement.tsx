@@ -37,7 +37,8 @@ export const TeamManagement = ({ membros, novoEmail, setNovoEmail, convidarMembr
           </button>
         </div>
       </div>
-      <div className="overflow-x-auto">
+      {/* Tabela tradicional para md+ */}
+      <div className="hidden md:block overflow-x-auto">
         <table className="min-w-full text-left">
           <thead>
             <tr className="text-white/80 font-bold">
@@ -67,6 +68,28 @@ export const TeamManagement = ({ membros, novoEmail, setNovoEmail, convidarMembr
             ))}
           </tbody>
         </table>
+      </div>
+      {/* Cards verticais para mobile */}
+      <div className="flex flex-col gap-4 md:hidden">
+        {membros.map((m) => (
+          <div key={m.email} className="rounded-2xl shadow-xl bg-[#101C3A]/50 border border-blue-500/20 p-4 flex flex-col gap-2">
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-bold text-white text-base">{m.nome}</span>
+              <span className="px-2 py-1 rounded-full text-xs font-bold bg-white/10 text-white/80">{m.permissao}</span>
+            </div>
+            <div className="flex flex-col gap-1 text-sm text-white/80">
+              <span><span className="font-semibold text-white/60">E-mail:</span> {m.email}</span>
+            </div>
+            {m.permissao !== "Admin" && (
+              <button
+                className="mt-3 px-3 py-2 rounded-lg bg-red-600/80 text-white text-xs font-bold shadow hover:bg-red-700 transition-all self-end"
+                onClick={() => removerMembro(m.email)}
+              >
+                Remover
+              </button>
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );
