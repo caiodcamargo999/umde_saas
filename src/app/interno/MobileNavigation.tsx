@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { useState } from "react";
 
-// SVG minimalista para cada item (placeholders, troque por Heroicons/Lucide depois)
 const icons = {
   dashboard: (
     <svg width="22" height="22" fill="none" viewBox="0 0 24 24" className="text-inherit"><rect x="3" y="3" width="7" height="7" rx="2" fill="currentColor"/><rect x="14" y="3" width="7" height="7" rx="2" fill="currentColor"/><rect x="14" y="14" width="7" height="7" rx="2" fill="currentColor"/><rect x="3" y="14" width="7" height="7" rx="2" fill="currentColor"/></svg>
@@ -41,34 +41,44 @@ const navItems = [
   { label: "Configurações", href: "/interno/configuracoes", icon: icons.configuracoes },
 ];
 
-export default function Sidebar() {
+export default function MobileNavigation() {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <>
-      {/* Sidebar Desktop */}
-      <aside className="flex flex-col w-32 bg-[#101C3A]/90 border-r border-[#0D4FF7]/20 backdrop-blur-lg pt-0 items-center gap-2 shadow-2xl z-20 min-h-screen fixed left-0 top-0 h-screen">
-        {/* Logo Umdê no topo, ocupando quase toda a largura do retângulo */}
-        <div className="w-full flex items-center justify-center h-32 bg-transparent mb-6">
-          <Image src="/logo/umde-icon.png" alt="Logo Umdê" width={110} height={110} className="object-contain w-24 h-24 md:w-28 md:h-28" style={{maxHeight:'110px', maxWidth:'110px'}} priority />
-        </div>
-        <nav className="flex flex-col gap-2 w-full items-center">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-[#101C3A]/95 border-b border-[#0D4FF7]/20 backdrop-blur-lg shadow-lg">
+      <div className="flex items-center justify-between px-4 py-3">
+        <Link href="/interno/dashboard" className="flex items-center gap-2">
+          <Image src="/logo/umde-icon.png" alt="Logo Umdê" width={36} height={36} className="object-contain w-9 h-9" priority />
+          <span className="font-bold text-lg tracking-tight text-white/90">UMDÊ</span>
+        </Link>
+        <button onClick={() => setIsOpen(!isOpen)} className="p-2 rounded-md hover:bg-[#0D4FF7]/20">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            {isOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+            )}
+          </svg>
+        </button>
+      </div>
+      {isOpen && (
+        <nav className="px-2 pt-2 pb-4 space-y-1">
           {navItems.map((item) => {
             const active = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`group flex flex-col items-center gap-1 px-2 py-3 rounded-xl transition-all text-xs font-semibold w-20 hover:bg-[#0D4FF7]/10 ${active ? "bg-[#0D4FF7]/30 text-[#0D4FF7] shadow-[0_0_8px_#0D4FF7]" : "text-white/70"}`}
-              >
-                <span className={`text-xl mb-1 transition-colors ${active ? "text-[#0D4FF7]" : "text-white/60"}`}>{item.icon}</span>
-                <span className="text-xs font-medium truncate w-full text-center">{item.label}</span>
+                onClick={() => setIsOpen(false)}
+                className={`flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium ${active ? "bg-[#0D4FF7]/30 text-white" : "text-white/70 hover:bg-[#0D4FF7]/10"}`}>
+                {item.icon}
+                <span>{item.label}</span>
               </Link>
             );
           })}
         </nav>
-      </aside>
-
-      
-    </>
+      )}
+    </header>
   );
-} 
+}
