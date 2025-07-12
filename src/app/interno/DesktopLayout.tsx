@@ -1,6 +1,6 @@
 "use client";
-import Sidebar from "../sidebar/Sidebar";
-import Topbar from "../topbar/Topbar";
+import Sidebar from "./sidebar/Sidebar";
+import Topbar from "./topbar/Topbar";
 
 export default function DesktopLayout({ children }: { children: React.ReactNode }) {
   return (

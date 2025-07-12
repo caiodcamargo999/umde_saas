@@ -1,11 +1,14 @@
-"use client";
+'use client';
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea/dnd";
+import { DropResult } from "@hello-pangea/dnd";
+import { KanbanView } from "./components/KanbanView";
+import { TableView } from "./components/TableView";
+import { LeadDetailPanel } from "./components/LeadDetailPanel";
+import { LeadsHeader } from "./components/LeadsHeader";
 
 const etapas = ["Novo", "Qualificado", "Proposta", "Fechado"];
 
-type Lead = {
+export type Lead = {
   id: string;
   nome: string;
   status: string;
@@ -35,189 +38,70 @@ export default function LeadsPage() {
   const [view, setView] = useState<'kanban' | 'tabela'>("kanban");
   const [leads, setLeads] = useState<Lead[]>(initialLeads);
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const leadsByEtapa = groupLeadsByEtapa(leads);
+  const filteredLeads = leads.filter(lead => 
+    lead.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    lead.origem.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const leadsByEtapa = groupLeadsByEtapa(filteredLeads);
 
   function onDragEnd(result: DropResult) {
     if (!result.destination) return;
     const { source, destination } = result;
     if (source.droppableId === destination.droppableId && source.index === destination.index) return;
+
     const sourceEtapa = source.droppableId;
     const destEtapa = destination.droppableId;
+
     const sourceLeads = Array.from(leadsByEtapa[sourceEtapa]);
     const [removed] = sourceLeads.splice(source.index, 1);
     removed.etapa = destEtapa;
-    // Remove do source e adiciona no destino
+
     const destLeads = Array.from(leadsByEtapa[destEtapa]);
     destLeads.splice(destination.index, 0, removed);
-    // Atualiza leads
+
     const newLeads = leads.map((l) =>
       l.id === removed.id ? { ...removed } : l
     );
     setLeads(newLeads);
   }
 
-  // Filtros dinâmicos
-  const [filtroEtapa, setFiltroEtapa] = useState<string>("");
-  const leadsFiltrados = filtroEtapa ? leads.filter(l => l.etapa === filtroEtapa) : leads;
+  const handleUpdateLead = (updatedLead: Lead) => {
+    setLeads(leads.map(l => l.id === updatedLead.id ? updatedLead : l));
+    setSelectedLead(updatedLead);
+  };
+
+  const handleAddLead = () => {
+    // Lógica para adicionar um novo lead (abrir modal, etc.)
+    alert("Funcionalidade de adicionar lead será implementada!");
+  };
 
   return (
-    <div className="w-full max-w-6xl mx-auto py-2 sm:py-4 px-2 sm:px-4">
-      <div className="flex flex-col gap-2 sm:gap-4 mb-3 sm:mb-4 md:mb-8">
-        <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-white/90 tracking-tight">Leads</h1>
-        <div className="flex flex-col sm:flex-row gap-2 w-full">
-          <input
-            type="text"
-            placeholder="Buscar lead..."
-            className="px-2.5 sm:px-3 py-2 rounded-lg bg-white/10 text-white placeholder-white/50 border border-[#0D4FF7]/20 focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] transition w-full sm:w-48 md:w-64 text-sm"
-          />
-          <button className="px-3 sm:px-4 py-2 rounded-lg bg-[#0D4FF7] text-white font-bold shadow-lg hover:bg-blue-700 transition-all focus:outline-none focus:ring-2 focus:ring-[#0D4FF7] text-sm">
-            + Adicionar Lead
-          </button>
-          <div className="flex gap-1 sm:gap-2">
-            <button
-              className={`px-2.5 sm:px-3 py-2 rounded-lg font-bold text-sm ${view === 'kanban' ? 'bg-[#0D4FF7] text-white' : 'bg-white/10 text-white/60'} transition`}
-              onClick={() => setView('kanban')}
-            >Kanban</button>
-            <button
-              className={`px-2.5 sm:px-3 py-2 rounded-lg font-bold text-sm ${view === 'tabela' ? 'bg-[#0D4FF7] text-white' : 'bg-white/10 text-white/60'} transition`}
-              onClick={() => setView('tabela')}
-            >Tabela</button>
-          </div>
-        </div>
-      </div>
+    <div className="p-4">
+      <LeadsHeader 
+        view={view} 
+        setView={setView} 
+        onSearch={setSearchTerm} 
+        onAddLead={handleAddLead} 
+      />
+
       {view === 'tabela' ? (
-        <motion.div
-          className="overflow-x-auto rounded-xl sm:rounded-2xl shadow-xl bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/20 backdrop-blur-md"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <table className="min-w-full text-left text-xs sm:text-sm">
-            <thead>
-              <tr className="text-[#0D4FF7] font-bold">
-                <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Nome</th>
-                <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Status</th>
-                <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Origem</th>
-                <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Valor</th>
-                <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">Etapa</th>
-                <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-right">Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              {leadsFiltrados.map((lead) => (
-                <tr key={lead.id} className="border-t border-white/10 hover:bg-[#0D4FF7]/5 transition">
-                  <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 font-semibold text-white/90 text-xs sm:text-sm">{lead.nome}</td>
-                  <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">
-                    <span className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs font-bold ${lead.status === 'Fechado' ? 'bg-green-600/30 text-green-400' : lead.status === 'Novo' ? 'bg-[#0D4FF7]/20 text-[#0D4FF7]' : 'bg-yellow-600/20 text-yellow-300'}`}>{lead.status}</span>
-                  </td>
-                  <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-white/70 text-xs sm:text-sm">{lead.origem}</td>
-                  <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-white/90 text-xs sm:text-sm">{lead.valor}</td>
-                  <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-white/70 text-xs sm:text-sm">{lead.etapa}</td>
-                  <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-right">
-                    <button className="px-2 sm:px-3 py-1 rounded-lg bg-[#0D4FF7]/80 text-white text-xs font-bold shadow hover:bg-[#0D4FF7] transition-all" onClick={() => setSelectedLead(lead)}>Ver detalhes</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </motion.div>
+        <TableView leads={filteredLeads} onLeadClick={setSelectedLead} />
       ) : (
-        <DragDropContext onDragEnd={onDragEnd}>
-          <motion.div
-            className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            {etapas.map((etapa) => (
-              <Droppable droppableId={etapa} key={etapa}>
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                    className={`flex-1 min-w-[140px] sm:min-w-[180px] md:min-w-[220px] bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border border-[#0D4FF7]/20 rounded-xl sm:rounded-2xl shadow-xl backdrop-blur-md p-2 sm:p-3 flex flex-col gap-2 sm:gap-3 ${snapshot.isDraggingOver ? 'ring-2 ring-[#0D4FF7]' : ''}`}
-                  >
-                    <div className="font-bold text-[#0D4FF7] text-sm sm:text-base md:text-lg mb-1 sm:mb-2">{etapa}</div>
-                    <div className="flex flex-col gap-1.5 sm:gap-2 md:gap-3">
-                      {leadsByEtapa[etapa].map((lead, i) => (
-                        <Draggable draggableId={lead.id} index={i} key={lead.id}>
-                          {(provided, snapshot) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              className={`rounded-lg sm:rounded-xl bg-[#0D1A3A]/80 border border-[#0D4FF7]/10 p-2 sm:p-3 shadow flex flex-col gap-1 hover:scale-[1.02] transition-transform cursor-pointer ${snapshot.isDragging ? 'ring-2 ring-[#0D4FF7]' : ''}`}
-                              onClick={() => setSelectedLead(lead)}
-                            >
-                              <div className="font-semibold text-white/90 text-xs sm:text-sm truncate">{lead.nome}</div>
-                              <div className="text-xs text-white/60 truncate">{lead.origem} • {lead.valor}</div>
-                              <div className="flex gap-1 sm:gap-2 mt-1">
-                                <span className={`px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] font-bold ${lead.status === 'Fechado' ? 'bg-green-600/30 text-green-400' : lead.status === 'Novo' ? 'bg-[#0D4FF7]/20 text-[#0D4FF7]' : 'bg-yellow-600/20 text-yellow-300'}`}>{lead.status}</span>
-                              </div>
-                            </div>
-                          )}
-                        </Draggable>
-                      ))}
-                      {provided.placeholder}
-                    </div>
-                  </div>
-                )}
-              </Droppable>
-            ))}
-          </motion.div>
-        </DragDropContext>
+        <KanbanView 
+          leadsByEtapa={leadsByEtapa} 
+          onDragEnd={onDragEnd} 
+          onLeadClick={setSelectedLead} 
+        />
       )}
-      {/* Painel lateral de detalhamento do lead */}
-      <AnimatePresence>
-        {selectedLead && (
-          <motion.div
-            className="fixed top-0 right-0 h-full w-full sm:max-w-md bg-gradient-to-br from-[#101C3A] to-[#0D1A3A] border-l border-[#0D4FF7]/30 shadow-2xl z-50 flex flex-col p-3 sm:p-4 md:p-8"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          >
-            <button
-              className="absolute top-2 right-2 text-white/60 text-xl sm:text-2xl font-bold hover:text-white transition"
-              onClick={() => setSelectedLead(null)}
-              aria-label="Fechar"
-            >×</button>
-            {/* Edição inline */}
-            <input
-              className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#0D4FF7] mb-2 bg-transparent border-b border-[#0D4FF7]/40 focus:outline-none focus:border-[#0D4FF7] transition text-sm sm:text-base"
-              value={selectedLead.nome}
-              onChange={e => setSelectedLead({ ...selectedLead, nome: e.target.value })}
-            />
-            <input
-              className="text-white/80 mb-3 sm:mb-4 bg-transparent border-b border-[#0D4FF7]/20 focus:outline-none focus:border-[#0D4FF7] transition text-sm"
-              value={selectedLead.email}
-              onChange={e => setSelectedLead({ ...selectedLead, email: e.target.value })}
-            />
-            <div className="flex flex-col sm:flex-row gap-2 mb-3 sm:mb-4">
-              <label className="text-white/70 text-xs sm:text-sm">Filtrar etapa:</label>
-              <select value={filtroEtapa} onChange={e => setFiltroEtapa(e.target.value)} className="bg-[#0D1A3A] border border-[#0D4FF7]/30 text-white rounded px-2 py-1 text-xs sm:text-sm">
-                <option value="">Todas</option>
-                {etapas.map(etapa => <option key={etapa} value={etapa}>{etapa}</option>)}
-              </select>
-            </div>
-            <div className="mb-4 sm:mb-6">
-              <h3 className="text-sm sm:text-base md:text-lg font-bold text-white/80 mb-2">Histórico</h3>
-              <ul className="text-white/60 text-xs sm:text-sm list-disc pl-4 sm:pl-5 space-y-1">
-                {selectedLead.historico.map((h, i) => (
-                  <li key={i}>{h}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-2 mt-auto">
-              <button className="px-3 sm:px-4 py-2 rounded-lg bg-[#0D4FF7] text-white font-bold shadow hover:bg-blue-700 transition-all text-sm">WhatsApp</button>
-              <button className="px-3 sm:px-4 py-2 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm">Agendar</button>
-              <button className="px-3 sm:px-4 py-2 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm">Nota</button>
-              <button className="px-3 sm:px-4 py-2 rounded-lg bg-white/10 text-white font-bold border border-[#0D4FF7]/40 hover:bg-[#0D4FF7]/20 transition-all text-sm">Email</button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+      <LeadDetailPanel 
+        lead={selectedLead} 
+        onClose={() => setSelectedLead(null)} 
+        onUpdateLead={handleUpdateLead}
+      />
     </div>
   );
-} 
+}
