@@ -79,7 +79,7 @@ export default function LeadsPage() {
   };
 
   return (
-    <div className="p-4">
+    <div className="w-full px-2 md:px-8 xl:px-16">
       <LeadsHeader 
         view={view} 
         setView={setView} 

@@ -34,7 +34,7 @@ export default function ImoveisPage() {
   };
 
   return (
-    <div className="p-4">
+    <div className="w-full px-2 md:px-8 xl:px-16">
       <ImoveisHeader 
         onSearch={setSearchTerm} 
         onAddImovel={handleAddImovel} 

@@ -107,7 +107,7 @@ export default function MensagensPage() {
   };
 
   return (
-    <div className="flex h-[calc(100vh-120px)] gap-6 p-4">
+    <div className="w-full px-2 md:px-8 xl:px-16 flex h-[calc(100vh-120px)] gap-6">
       <ConversationList 
         conversations={filteredConversations} 
         selectedConversation={selectedConversation} 

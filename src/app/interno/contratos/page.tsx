@@ -165,7 +165,7 @@ export default function ContratosPage() {
   const regioesDisponiveis = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Florianópolis"];
 
   return (
-    <div className="p-4">
+    <div className="w-full px-2 md:px-8 xl:px-16">
       <ContratosHeader 
         onSearch={setFiltroNumero} 
         onCreateContrato={() => setShowCreateModal(true)} 

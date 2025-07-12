@@ -41,7 +41,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="w-full px-2 md:px-8 xl:px-16 space-y-8">
       {/* Filtros de Período */}
       <div className="flex items-center justify-end gap-2">
         {["7d", "30d", "90d", "1a"].map((period) => (
@@ -81,18 +81,8 @@ export default function Dashboard() {
       </div>
 
       {/* Atividade Recente e Performance */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-        <div className="lg:col-span-3">
-          <RecentActivity activities={recentActivities} />
-        </div>
-        <div className="lg:col-span-2">
-          <BarChart data={performanceData} title="Performance por Agente" color="#25D366" />
-        </div>
-      </div>
-
-      {/* Ações Rápidas */}
-      <div>
-        <h2 className="text-xl font-semibold text-white mb-4">Ações Rápidas</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <RecentActivity activities={recentActivities} />
         <QuickActions />
       </div>
     </div>
