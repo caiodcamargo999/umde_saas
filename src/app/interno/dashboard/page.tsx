@@ -18,13 +18,6 @@ export default function Dashboard() {
     { label: "Fechados", value: 12 }
   ];
 
-  const performanceData = [
-    { label: "Agente A", value: 85 },
-    { label: "Agente B", value: 72 },
-    { label: "Agente C", value: 68 },
-    { label: "Agente D", value: 54 }
-  ];
-
   const leadsBySource = [
     { name: "WhatsApp", value: 35, color: "#25D366" },
     { name: "Canal Pro", value: 28, color: "#0D4FF7" },

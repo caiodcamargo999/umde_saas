@@ -1,6 +1,6 @@
 'use client';
 import { motion, AnimatePresence } from "framer-motion";
-import { X, User, Mail, Phone, Tag, MessageSquare, Calendar, StickyNote, FilePlus } from 'lucide-react';
+import { X, Mail, Tag, MessageSquare, Calendar, StickyNote, FilePlus } from 'lucide-react';
 import type { Lead } from '../page';
 import React, { useState } from 'react';
 import SidePanel from '../../imoveis/components/SidePanel';
@@ -79,15 +79,15 @@ export const LeadDetailPanel = ({ lead, onClose, onUpdateLead }: LeadDetailPanel
           </div>
         </div>
         <div className="p-4 md:p-6 border-t border-blue-500/20 flex justify-around w-full">
-          <button className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors">
+          <button className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors" onClick={() => alert('Funcionalidade de contato será implementada!')}>
             <MessageSquare className="w-5 h-5" />
             <span className="text-xs">Contato</span>
           </button>
-          <button className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors">
+          <button className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors" onClick={() => alert('Funcionalidade de agendamento será implementada!')}>
             <Calendar className="w-5 h-5" />
             <span className="text-xs">Agendar</span>
           </button>
-          <button className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors">
+          <button className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors" onClick={() => alert('Funcionalidade de notas será implementada!')}>
             <StickyNote className="w-5 h-5" />
             <span className="text-xs">Nota</span>
           </button>
