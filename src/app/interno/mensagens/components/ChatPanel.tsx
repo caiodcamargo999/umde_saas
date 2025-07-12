@@ -4,24 +4,7 @@ import Image from 'next/image';
 import { MessageBubble } from './MessageBubble';
 import { MessageInput } from './MessageInput';
 import { useState, useEffect, useRef } from 'react';
-
-interface Message {
-  id: string;
-  text: string;
-  sender: string;
-  timestamp: string;
-  status: 'sent' | 'delivered' | 'read';
-  time: string;
-}
-
-interface Conversation {
-  id: string;
-  name: string;
-  channel: string;
-  status: string;
-  avatar?: string;
-  messages: Message[];
-}
+import type { Conversation } from '../page';
 
 interface ChatPanelProps {
   conversation: Conversation;

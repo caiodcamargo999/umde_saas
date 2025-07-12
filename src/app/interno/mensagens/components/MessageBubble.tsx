@@ -1,13 +1,5 @@
 'use client';
-
-interface Message {
-  id: string;
-  text: string;
-  sender: string;
-  timestamp: string;
-  status: 'sent' | 'delivered' | 'read';
-  time: string;
-}
+import type { Message } from '../page';
 
 interface MessageBubbleProps {
   message: Message;

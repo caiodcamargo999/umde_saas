@@ -1,16 +1,7 @@
 'use client';
 import { Search, User } from 'lucide-react';
 import Image from 'next/image';
-
-interface Conversation {
-  id: string;
-  name: string;
-  channel: string;
-  status: string;
-  avatar?: string;
-  lastMessage: string;
-  lastMessageTime: string;
-}
+import type { Conversation } from '../page';
 
 interface ConversationListProps {
   conversations: Conversation[];

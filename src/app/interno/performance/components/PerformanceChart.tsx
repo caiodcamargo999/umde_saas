@@ -1,7 +1,20 @@
 'use client';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
-export const PerformanceChart = ({ data, title, type = "line", dataKey, strokeColor = "#0D4FF7" }) => {
+interface ChartData {
+  name: string;
+  [key: string]: string | number;
+}
+
+interface PerformanceChartProps {
+  data: ChartData[];
+  title: string;
+  type?: "line" | "bar";
+  dataKey: string;
+  strokeColor?: string;
+}
+
+export const PerformanceChart = ({ data, title, type = "line", dataKey, strokeColor = "#0D4FF7" }: PerformanceChartProps) => {
   return (
     <div className="bg-[#101C3A]/50 p-6 rounded-2xl border border-blue-500/20">
       <h3 className="text-lg font-semibold mb-4 text-white">{title}</h3>

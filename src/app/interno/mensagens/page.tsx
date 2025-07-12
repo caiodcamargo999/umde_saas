@@ -3,13 +3,13 @@ import { useState } from "react";
 import { ConversationList } from "./components/ConversationList";
 import { ChatPanel } from "./components/ChatPanel";
 
-type Message = {
+export type Message = {
   text: string;
   sender: string;
   time: string;
 };
 
-type Conversation = {
+export type Conversation = {
   id: string;
   name: string;
   channel: string;

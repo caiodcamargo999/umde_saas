@@ -1,7 +1,15 @@
 'use client';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 
-export const PerformanceMetricCard = ({ title, value, description, change, color = "blue" }) => {
+interface PerformanceMetricCardProps {
+  title: string;
+  value: string;
+  description: string;
+  change?: string;
+  color?: "blue" | "green" | "orange" | "red";
+}
+
+export const PerformanceMetricCard = ({ title, value, description, change, color = "blue" }: PerformanceMetricCardProps) => {
   const isPositive = change && change.startsWith('+');
   const colorClasses = {
     blue: "bg-blue-500/10 border-blue-500/30 text-blue-400",

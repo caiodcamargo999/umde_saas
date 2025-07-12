@@ -39,14 +39,14 @@ export default function CTASection() {
           viewport={{ once: true }}
           className="mt-10"
         >
-          <Link href="/auth" passHref>
-            <motion.a
-              className="inline-block px-8 py-4 rounded-full bg-white text-[#0D4FF7] font-bold text-lg shadow-2xl transform transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-4 focus:ring-offset-[#0D4FF7]"
+          <Link href="/auth">
+            <motion.button
+              className="inline-block px-8 py-4 rounded-full bg-white text-[#0D4FF7] font-bold text-lg shadow-2xl transform transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-4 focus:ring-offset-[#0D4FF7] cursor-pointer"
               whileHover={{ scale: 1.05, boxShadow: '0px 10px 30px rgba(255, 255, 255, 0.3)' }}
               whileTap={{ scale: 0.95 }}
             >
               Começar gratuitamente
-            </motion.a>
+            </motion.button>
           </Link>
         </motion.div>
       </div>

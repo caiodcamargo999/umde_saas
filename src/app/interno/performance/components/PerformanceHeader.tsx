@@ -1,7 +1,11 @@
 'use client';
 
+interface PerformanceHeaderProps {
+  selectedPeriod: string;
+  setSelectedPeriod: (period: string) => void;
+}
 
-export const PerformanceHeader = ({ selectedPeriod, setSelectedPeriod }) => {
+export const PerformanceHeader = ({ selectedPeriod, setSelectedPeriod }: PerformanceHeaderProps) => {
   return (
     <div className="mb-8 flex justify-between items-center">
       <h1 className="text-3xl font-bold text-white">Performance</h1>

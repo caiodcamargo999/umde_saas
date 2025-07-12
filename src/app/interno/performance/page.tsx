@@ -9,10 +9,10 @@ export default function PerformancePage() {
 
   // Dados simulados para as métricas
   const metricCardsData = [
-    { title: "Taxa de Conversão", value: "24%", description: "Média geral", change: "+2.1%", color: "blue" },
-    { title: "Tempo Médio de Fechamento", value: "18 dias", description: "Últimos 30 dias", change: "-1.5d", color: "green" },
-    { title: "Leads Atendidos", value: "112", description: "Este mês", change: "+15", color: "orange" },
-    { title: "Vendas Fechadas", value: "32", description: "Últimos 30 dias", change: "+5", color: "red" },
+    { title: "Taxa de Conversão", value: "24%", description: "Média geral", change: "+2.1%", color: "blue" as const },
+    { title: "Tempo Médio de Fechamento", value: "18 dias", description: "Últimos 30 dias", change: "-1.5d", color: "green" as const },
+    { title: "Leads Atendidos", value: "112", description: "Este mês", change: "+15", color: "orange" as const },
+    { title: "Vendas Fechadas", value: "32", description: "Últimos 30 dias", change: "+5", color: "red" as const },
   ];
 
   // Dados simulados para os gráficos
