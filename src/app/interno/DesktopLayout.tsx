@@ -8,7 +8,7 @@ export default function DesktopLayout({ children }: { children: React.ReactNode 
       <Sidebar />
       <div className="flex flex-col flex-1 ml-32">
         <Topbar />
-        <main className="flex-1 p-8">{children}</main>
+        <main className="flex-1 w-full max-w-full px-4 md:px-8 xl:px-16 py-8 overflow-x-hidden">{children}</main>
       </div>
     </div>
   );

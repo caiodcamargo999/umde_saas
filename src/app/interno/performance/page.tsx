@@ -35,7 +35,7 @@ export default function PerformancePage() {
   ];
 
   return (
-    <div className="p-4">
+    <div className="w-full max-w-full px-4 md:px-8 xl:px-16 overflow-x-hidden">
       <PerformanceHeader selectedPeriod={selectedPeriod} setSelectedPeriod={setSelectedPeriod} />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

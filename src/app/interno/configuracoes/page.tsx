@@ -67,7 +67,7 @@ export default function ConfiguracoesPage() {
   };
 
   return (
-    <div className="w-full px-2 md:px-8 xl:px-16 py-6">
+    <div className="w-full max-w-full px-4 md:px-8 xl:px-16 py-6 overflow-x-hidden">
       <h1 className="text-3xl font-bold mb-8 text-white">Configurações da Conta</h1>
 
       <AccountDetails account={account} />

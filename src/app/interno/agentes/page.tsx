@@ -107,7 +107,7 @@ export default function AgentesPage() {
   };
 
   return (
-    <div className="p-4">
+    <div className="w-full max-w-full px-4 md:px-8 xl:px-16 overflow-x-hidden">
       <AgentesHeader onAddAgente={() => alert("Abrir modal de criação de agente!")} />
 
       <CreateAgenteSection 
