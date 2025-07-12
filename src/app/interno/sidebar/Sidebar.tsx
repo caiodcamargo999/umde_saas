@@ -1,3 +1,4 @@
+"
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -41,34 +42,43 @@ const navItems = [
   { label: "Configurações", href: "/interno/configuracoes", icon: icons.configuracoes },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, toggleSidebar }: { isOpen: boolean; toggleSidebar: () => void; }) {
   const pathname = usePathname();
   return (
     <>
-      {/* Sidebar Desktop */}
-      <aside className="flex flex-col w-32 bg-[#101C3A]/90 border-r border-[#0D4FF7]/20 backdrop-blur-lg pt-0 items-center gap-2 shadow-2xl z-20 min-h-screen fixed left-0 top-0 h-screen">
-        {/* Logo Umdê no topo, ocupando quase toda a largura do retângulo */}
-        <div className="w-full flex items-center justify-center h-32 bg-transparent mb-6">
-          <Image src="/logo/umde-icon.png" alt="Logo Umdê" width={110} height={110} className="object-contain w-24 h-24 md:w-28 md:h-28" style={{maxHeight:'110px', maxWidth:'110px'}} priority />
+      {/* Overlay for mobile */}
+      <div className={`fixed inset-0 bg-black/60 z-40 lg:hidden transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={toggleSidebar}></div>
+
+      {/* Sidebar */}
+      <aside className={`flex flex-col w-64 lg:w-32 bg-[#101C3A]/90 border-r border-[#0D4FF7]/20 backdrop-blur-lg pt-0 items-center gap-2 shadow-2xl z-50 min-h-screen fixed top-0 h-screen transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}>
+        <div className="w-full flex items-center justify-between h-20 lg:h-32 bg-transparent mb-0 lg:mb-6 px-4 lg:px-0">
+          <Link href="/interno/dashboard" className="flex items-center gap-2 lg:justify-center lg:w-full">
+            <Image src="/logo/umde-icon.png" alt="Logo Umdê" width={40} height={40} className="object-contain lg:w-24 lg:h-24" priority />
+            <span className="font-bold text-lg tracking-tight text-white/90 lg:hidden">UMDÊ</span>
+          </Link>
+          <button onClick={toggleSidebar} className="lg:hidden p-2 rounded-md hover:bg-[#0D4FF7]/20">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-        <nav className="flex flex-col gap-2 w-full items-center">
+        <nav className="flex flex-col gap-2 w-full items-start lg:items-center px-4 lg:px-0">
           {navItems.map((item) => {
             const active = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`group flex flex-col items-center gap-1 px-2 py-3 rounded-xl transition-all text-xs font-semibold w-20 hover:bg-[#0D4FF7]/10 ${active ? "bg-[#0D4FF7]/30 text-[#0D4FF7] shadow-[0_0_8px_#0D4FF7]" : "text-white/70"}`}
-              >
-                <span className={`text-xl mb-1 transition-colors ${active ? "text-[#0D4FF7]" : "text-white/60"}`}>{item.icon}</span>
-                <span className="text-xs font-medium truncate w-full text-center">{item.label}</span>
+                onClick={toggleSidebar}
+                className={`group flex items-center gap-3 lg:gap-1 lg:flex-col px-3 py-2 lg:py-3 rounded-xl transition-all text-base lg:text-xs font-semibold w-full lg:w-20 hover:bg-[#0D4FF7]/10 ${active ? "bg-[#0D4FF7]/30 text-[#0D4FF7] shadow-[0_0_8px_#0D4FF7]" : "text-white/70"}`}>
+                <span className={`text-xl transition-colors ${active ? "text-[#0D4FF7]" : "text-white/60"}`}>{item.icon}</span>
+                <span className="font-medium truncate lg:w-full lg:text-center">{item.label}</span>
               </Link>
             );
           })}
         </nav>
       </aside>
-
-      
     </>
   );
-} 
+}
+ 
