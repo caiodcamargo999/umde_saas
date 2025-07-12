@@ -38,7 +38,7 @@ export const PieChart = ({ data, title }: PieChartProps) => {
               <Cell key={`cell-${index}`} fill={entry.color} />
             ))}
           </Pie>
-          <Legend iconSize={10} layout="vertical" verticalAlign="middle" align="right" />
+          <Legend iconSize={10} layout="horizontal" verticalAlign="bottom" align="center" />
         </RechartsPieChart>
       </ResponsiveContainer>
     </div>

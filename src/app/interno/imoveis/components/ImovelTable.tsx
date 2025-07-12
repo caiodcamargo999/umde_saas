@@ -64,7 +64,7 @@ export const ImovelTable = ({ imoveis, onImovelClick }: ImovelTableProps) => {
               <span><span className="font-semibold text-white/60">Cidade:</span> {item.cidade}</span>
             </div>
             <button
-              className="mt-3 px-3 py-2 rounded-lg bg-blue-500/80 text-white text-xs font-bold shadow hover:bg-blue-500 transition-all self-end"
+              className="mt-3 w-full px-3 py-2 rounded-lg bg-blue-500/80 text-white text-xs font-bold shadow hover:bg-blue-500 transition-all"
               onClick={e => { e.stopPropagation(); onImovelClick(item); }}
             >
               Ver detalhes

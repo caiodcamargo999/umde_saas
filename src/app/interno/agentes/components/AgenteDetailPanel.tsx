@@ -15,7 +15,7 @@ export const AgenteDetailPanel = ({ agente, onClose, onUpdateAgente }: AgenteDet
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed top-0 right-0 h-full w-full max-w-md bg-[#0D1A3A] border-l border-blue-500/30 shadow-2xl z-50 flex flex-col"
+        className="fixed top-0 right-0 h-full w-full md:max-w-md bg-[#0D1A3A] border-l border-blue-500/30 shadow-2xl z-50 flex flex-col"
         initial={{ x: "100%" }}
         animate={{ x: 0 }}
         exit={{ x: "100%" }}

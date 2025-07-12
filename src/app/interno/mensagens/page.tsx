@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { ConversationList } from "./components/ConversationList";
 import { ChatPanel } from "./components/ChatPanel";
+import { useMediaQuery } from "../../components/useMediaQuery";
 
 export type Message = {
   text: string;
@@ -73,8 +74,9 @@ const initialConversations: Conversation[] = [
 
 export default function MensagensPage() {
   const [conversations, setConversations] = useState<Conversation[]>(initialConversations);
-  const [selectedConversation, setSelectedConversation] = useState<Conversation | null>(initialConversations[0]);
+  const [selectedConversation, setSelectedConversation] = useState<Conversation | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const isMobile = useMediaQuery("(max-width: 767px)"); // md breakpoint is 768px
 
   const filteredConversations = conversations.filter(conv => 
     conv.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -108,13 +110,21 @@ export default function MensagensPage() {
 
   return (
     <div className="w-full max-w-full px-4 md:px-8 xl:px-16 flex flex-col md:flex-row h-auto md:h-[calc(100vh-120px)] gap-4 overflow-x-hidden">
-      <ConversationList 
-        conversations={filteredConversations} 
-        selectedConversation={selectedConversation} 
-        onSelectConversation={setSelectedConversation}
-        onSearch={setSearchTerm}
-      />
-      {selectedConversation && (
+      {isMobile && selectedConversation ? (
+        <ChatPanel 
+          conversation={selectedConversation} 
+          onClose={() => setSelectedConversation(null)} 
+          onSendMessage={handleSendMessage}
+        />
+      ) : (
+        <ConversationList 
+          conversations={filteredConversations} 
+          selectedConversation={selectedConversation} 
+          onSelectConversation={setSelectedConversation}
+          onSearch={setSearchTerm}
+        />
+      )}
+      {!isMobile && selectedConversation && (
         <ChatPanel 
           conversation={selectedConversation} 
           onClose={() => setSelectedConversation(null)} 

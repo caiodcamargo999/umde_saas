@@ -36,7 +36,7 @@ export const QuickActions = () => {
           </div>
           <div>
             <h3 className="font-semibold text-white">{action.title}</h3>
-            <p className="text-sm text-white/70">{action.description}</p>
+            <p className="text-xs sm:text-sm text-white/70">{action.description}</p>
           </div>
         </a>
       ))}

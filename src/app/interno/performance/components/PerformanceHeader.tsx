@@ -8,7 +8,7 @@ interface PerformanceHeaderProps {
 export const PerformanceHeader = ({ selectedPeriod, setSelectedPeriod }: PerformanceHeaderProps) => {
   return (
     <div className="mb-8 flex justify-between items-center">
-      <h1 className="text-3xl font-bold text-white">Performance</h1>
+      <h1 className="text-2xl md:text-3xl font-bold text-white">Performance</h1>
       <div className="flex items-center gap-2">
         {["7d", "30d", "90d", "1a"].map((period) => (
           <button
